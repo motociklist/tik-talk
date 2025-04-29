@@ -5,11 +5,11 @@ import { inject, Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ProfileService {
-  http:HttpClient = inject(HttpClient)
+  http = inject(HttpClient)
 
   baseApiUrl = 'https://icherniakov.ru/yt-course'
 
   getTestAccounts(){
-    return this.http.get('${ this.baseApiUrl }/account/test_accounts');
+    return this.http.get(`${ this.baseApiUrl }/account/test_accounts`);
   }
 }
