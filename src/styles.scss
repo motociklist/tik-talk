@@ -1,3 +1,5 @@
+@use "margins";
+
 :root{
   --darr-color: #000000;
   --light-color: #ffffff;
@@ -15,6 +17,9 @@
 body{
   background-color: var(--darr-color);
   color: var(--light-color);
+  background-image: url(/assets/imgs/Img-Bg.png) ;
+  background-size: cover;
+  background-repeat:no-repeat;
 }
 
 .skill-tag{
@@ -29,13 +34,15 @@ body{
 }
 
 .btn {
+  width: 100%;
   border: none;
   background: var(--primary-color);
   color: var(--darr-color);
   padding: 10px 20px;
   font-weight: 700;
-  font-style: 14px;
+  font-size: 14px;
   line-height: 24px;
+  cursor: pointer;
 }
 
 .h6{
@@ -44,7 +51,34 @@ body{
   font-weight: 800;
 }
 
+.h1{
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+}
+
 .subtitle{
   font-size: 14px;
   line-height: 20px;
+}
+
+.tt-control-label{
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  display: block;
+}
+
+.tt-input{
+  width: 100%;
+  margin-top: 8px;
+  display: block;
+  border: 1px solid var(--light-color);
+  border-radius: 4px;
+  padding: 12px 20px;
+  background: var(--darr-color);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--light-color);
 }
