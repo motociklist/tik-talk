@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,13 +9,29 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
+
 export class LoginPageComponent {
+  authService = inject(AuthService);
+
   form = new FormGroup({
-    username: new FormControl(null),
-    password: new FormControl(null)
+    username: new FormControl(null, Validators.required),
+    password: new FormControl(null, Validators.required)
   })
 
-  onSubmit(event:Event){
-    console.log(event);
+  onSubmit() {
+    if (this.form.valid) {
+      //@ts-ignore
+      this.authService.login(this.form.value).subscribe({
+        next: (response) => {
+          console.log('Успешный ответ:', response);
+          // Действия после успешного входа (например, редирект)
+        },
+        error: (error) => {
+          console.error('Ошибка:', error);
+          // Показать ошибку пользователю
+        }
+      });
+    }
   }
+
 }
