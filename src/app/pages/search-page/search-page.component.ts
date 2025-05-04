@@ -3,7 +3,6 @@ import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.
 import { Profile } from '../../data/interfaces/profile.interfase';
 import { ProfileService } from '../../data/services/profile.service';
 
-
 @Component({
   selector: 'app-search-page',
   imports: [ProfileCardComponent],
