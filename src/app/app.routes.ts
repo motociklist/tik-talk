@@ -6,10 +6,13 @@ import { LayoutComponent } from './common-ui/layout/layout.component';
 
 export const routes: Routes = [
 
-  {path: '', component: LayoutComponent, children:[
-    { path: '', component: SearchPageComponent },
-    { path: 'profile', component: ProfilePageComponent }
-  ]},
+  {
+    path: '', component: LayoutComponent,
+    children: [
+      { path: '', component: SearchPageComponent },
+      { path: 'profile', component: ProfilePageComponent }
+    ]
+  },
   { path: 'login', component: LoginPageComponent },
 
 ];
