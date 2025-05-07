@@ -30,7 +30,6 @@ export class LoginPageComponent {
     )
     .subscribe( (val: any) =>{
       console.log(val);
-
     })
   }
 
