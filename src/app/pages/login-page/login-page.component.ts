@@ -27,8 +27,6 @@ export class LoginPageComponent {
         console.log(res);
       });
     }
-
-
   }
 
 }
