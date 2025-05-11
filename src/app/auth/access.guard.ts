@@ -3,7 +3,7 @@ import { AuthService } from "./auth.service"
 import { Router } from "@angular/router"
 
 export const canActivateAuth = () => {
-  const isLoggdIn = inject(AuthService).isAuth
+  const isLoggdIn = inject(AuthService).isAuth;
 
   if(isLoggdIn){
     return true
