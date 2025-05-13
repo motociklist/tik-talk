@@ -29,12 +29,20 @@ To build the project run:
 ng build
 ```
 
+```
 git add -A
 git add .
+```
 
+```
 git commit -m ' '
+```
 
+```
 git push
+```
 
+```
 git checkout -b ''
 git checkout
+```
