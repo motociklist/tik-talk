@@ -46,3 +46,21 @@ git push
 git checkout -b ''
 git checkout
 ```
+
+
+```
+git branch
+```
+
+
+```
+git fetch
+```
+
+
+```
+git status
+gir diff
+
+```
+
