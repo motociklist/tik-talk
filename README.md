@@ -30,6 +30,12 @@ ng build
 ```
 
 ```
+username  motociklist24
+password  YKZT9zxOjP
+```
+
+
+```
 git add -A
 git add .
 ```
@@ -55,6 +61,7 @@ git branch
 
 ```
 git fetch
+git merge 
 ```
 
 
