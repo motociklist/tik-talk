@@ -10,10 +10,13 @@ import { ProfileService } from '../../data/services/profile.service';
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
-  profileService = inject(ProfileService)
+  profileService = inject(ProfileService);
 
   ngOnInit(){
-    console.log('ng');
-    
+
+    this.profileService.getMe().subscribe( val => {
+      console.log(val);
+    })
+
   }
 }
