@@ -63,8 +63,9 @@ git branch
 
 
 ```
-git fetch
-git merge 
+git fetch ''
+git merge
+git pull
 ```
 
 
