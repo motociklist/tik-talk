@@ -9,9 +9,10 @@ import { ProfileService } from '../../data/services/profile.service';
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss'
 })
+
 export class SearchPageComponent {
   profileService = inject(ProfileService);
-  profiles: Profile[] = []
+  profiles: Profile[] = [];
 
   constructor() {
     this.profileService.getTestAccounts()

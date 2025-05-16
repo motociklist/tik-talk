@@ -9,6 +9,7 @@ import { ProfileService } from '../../data/services/profile.service';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
+
 export class LayoutComponent {
   profileService = inject(ProfileService);
 

@@ -5,6 +5,7 @@ import { Profile } from '../interfaces/profile.interfase';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProfileService {
   http = inject(HttpClient);
 
@@ -17,5 +18,5 @@ export class ProfileService {
   getMe(){
     return this.http.get<Profile>(`${ this.baseApiUrl }account/me`);
   }
-  
+
 }
