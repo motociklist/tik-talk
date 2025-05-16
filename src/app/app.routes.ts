@@ -9,12 +9,14 @@ export const routes: Routes = [
 
   {
     path: '', component: LayoutComponent,
-    children: [
-      { path: '', component: SearchPageComponent },
-      { path: 'profile', component: ProfilePageComponent }
-    ],
+      children: [
+        { path: '', component: SearchPageComponent },
+        { path: 'profile', component: ProfilePageComponent }
+      ],
     canActivate: [canActivateAuth]
   },
-  { path: 'login', component: LoginPageComponent },
+  {
+    path: 'login', component: LoginPageComponent
+  },
 
 ];

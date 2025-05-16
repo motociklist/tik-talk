@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
+
 export class LoginPageComponent {
   authService = inject(AuthService);
   router = inject(Router);

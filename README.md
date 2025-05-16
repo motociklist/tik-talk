@@ -1,67 +1,68 @@
 # TikTalk
 
 
-```bash
+Once the server is running, open your browser and navigate to `http://localhost:4200/`.
+```
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
+ng generate component component-name
 ng generate --help
 ```
 
-## Building
 
 To build the project run:
-
-```bash
+```
 ng build
 ```
 
-```
+
+Login and password
+``````````````````
 
 motociklist24
 
 YKZT9zxOjP
 
-```
+``````````````````
 
-
+Adds changes from the working directory
 ```
 git add -A
 git add .
 ```
 
+
+Adds commit
 ```
 git commit -m ' '
 ```
 
+
+Adds commit in GitHub
 ```
 git push
 ```
 
+
+Switching between branches
 ```
 git checkout -b ''
 git checkout
 ```
 
 
+Show all branches
 ```
 git branch
 ```
 
 
+
+Pulling updates from GitHub
 ```
 git fetch ''
 git merge
@@ -69,9 +70,9 @@ git pull
 ```
 
 
+Show status and changes
 ```
 git status
 gir diff
-
 ```
 
