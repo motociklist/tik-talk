@@ -22,7 +22,7 @@ export class AuthService {
       this.token = this.cookieService.get('token')
       this.refreshToken = this.cookieService.get('refreshToken')
     }
-
+    console.log(this.router);
     return !!this.token
   }
 
@@ -65,7 +65,6 @@ export class AuthService {
   saveTokens(res : TokenResponse){
     this.token = res.access_token
     this.refreshToken = res.refresh_token
-
     this.cookieService.set('token', this.token)
     this.cookieService.set('refreshToken', this.refreshToken)
   }
