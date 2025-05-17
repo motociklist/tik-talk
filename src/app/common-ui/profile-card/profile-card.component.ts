@@ -10,6 +10,7 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 })
 
 export class ProfileCardComponent {
+
   @Input() profile!: Profile;
 
 }

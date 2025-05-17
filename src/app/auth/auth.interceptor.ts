@@ -10,10 +10,9 @@ export const authTokenInterceptor: HttpInterceptorFn = (req , next) => {
 
     const addToken = (req: HttpRequest<any>, token: string) => {
         return req.clone({
-        setHeaders:{
-            Authorization: `Bearer ${token}`
-        }
-    })
+        setHeaders:
+          { Authorization: `Bearer ${token}` }
+      })
     }
 
     const refreshAndProcced = (
