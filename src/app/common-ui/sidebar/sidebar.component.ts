@@ -3,9 +3,10 @@ import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [SvgIconComponent],
+  standalone: true,
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+  styleUrl: './sidebar.component.scss',
+  imports: [SvgIconComponent]
 })
 
 export class SidebarComponent {

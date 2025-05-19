@@ -29,6 +29,12 @@
     align-self: center;
   }
 
+  svg{
+    width: 16px;
+    height: 16px;
+    color: var(--light-color);
+  }
+
   &:hover,
   &:focus-visible {
     background-color: var(--dark-hover-color);
