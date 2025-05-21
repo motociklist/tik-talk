@@ -29,15 +29,18 @@
     align-self: center;
   }
 
-  svg{
+  .menu-item svg {
     width: 16px;
     height: 16px;
-    color: var(--light-color);
   }
 
   &:hover,
   &:focus-visible {
     background-color: var(--dark-hover-color);
     color: var(--primary-color);
+
+    .menu-item svg {
+    color: var(--primary-color);
+    }
   }
 }
