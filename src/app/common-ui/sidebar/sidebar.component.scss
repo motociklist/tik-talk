@@ -20,18 +20,14 @@
   grid-gap: 12px;
   font-weight: 700;
   font-size: 14px;
-  line-height: 24px;
+  line-height: 12px;
   width: 100%;
   text-align: left;
   border-radius: 2px;
 
   .icon-button{
+    height: 20px;
     align-self: center;
-  }
-
-  .menu-item svg {
-    width: 16px;
-    height: 16px;
   }
 
   &:hover,
