@@ -18,14 +18,17 @@
 
 <p class="medium-text mb20">Подписчики</p>
 
+<pre>{{ subscribers$ | async | json }}</pre>
+
 <!-- <app-subscribe-card></app-subscribe-card> -->
 
 <div class="mt20 to-subscribers">
   <a
-    [routerLink]="['/login']"
+    [routerLink]="['/subscribers']"
     class="to-subscribers-link medium-text"
   >
   Все подписчики
   </a>
+
   <!-- <svg icon="arrow" class="to-subscribers-icon"></svg> -->
 </div>
