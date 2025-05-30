@@ -45,5 +45,11 @@
     } @else {
        <img src="/assets/imgs/eyse.svg" alt="">
     }
+
+    <div class="medium-text username-text">{{ me.username }}</div>
+
+    <a [routerLink]="['settings']" class="settings-btn">
+      <svg icon="setings" class="settings-btn"></svg>
+    </a>
   }
 </footer>
