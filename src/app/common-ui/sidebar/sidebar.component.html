@@ -36,3 +36,14 @@
 
   <!-- <svg icon="arrow" class="to-subscribers-icon"></svg> -->
 </div>
+
+
+<footer class="sidebar__footer">
+  @if (me(); as me) {
+    @if (me.avatarUrl) {
+      <img [src]="me.avatarUrl | imgUrl" alt="">
+    } @else {
+       <img src="/assets/imgs/eyse.svg" alt="">
+    }
+  }
+</footer>
