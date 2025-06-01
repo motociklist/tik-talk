@@ -23,7 +23,7 @@
 @for(profile of subscribers$ | async; track profile.id) {
  <app-subscribe-card
   [profile]="profile">
-</app-subscribe-card> 
+</app-subscribe-card>
 }
 
 <div class="mt20 to-subscribers">
@@ -49,7 +49,7 @@
     <div class="medium-text username-text">{{ me.username }}</div>
 
     <a [routerLink]="['settings']" class="settings-btn">
-      <svg icon="setings" class="settings-btn"></svg>
+      <svg icon="settings" class="settings-btn"></svg>
     </a>
   }
 </footer>

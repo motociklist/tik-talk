@@ -85,9 +85,12 @@
 }
 
 .settings-btn {
+  width: 20px;
+  height: 20px;
   svg {
     color: var(--primary-color);
-    width: 13px;
+    width: 20px;
     height: 13px;
   }
+  align-items: center;
 }
