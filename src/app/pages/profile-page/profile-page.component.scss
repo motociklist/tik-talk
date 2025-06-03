@@ -18,3 +18,25 @@
     color: var(--dark-color);
 }
 
+.profile-page__body {
+    display: grid;
+    grid-gap: 64px;
+    grid-template-columns: 1fr 350px;
+}
+
+.subscribers-wrapper{
+    display: flex;
+    gap: 6px;
+}
+
+.subscriber-avarat-btn {
+    width: 36px;
+    height: 36px;
+   
+
+    img {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+    }
+}
