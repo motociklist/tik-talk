@@ -31,4 +31,7 @@ export class ProfileService {
     )
   }
 
+  getAccount(id: string){
+    return this.http.get<Profile>(`${ this.baseApiUrl }account/${id}`)
+  }
 }
