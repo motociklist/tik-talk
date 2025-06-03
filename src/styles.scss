@@ -1,7 +1,7 @@
 @use "margins";
 
 :root{
-  --darr-color: #000000;
+  --dark-color: #000000;
   --light-color: #ffffff;
   --primary-color: #ae7aff;
   --gray-color: #5f646d;
@@ -18,7 +18,7 @@
 
 body{
   height: 100dvh; 
-  background-color: var(--darr-color);
+  background-color: var(--dark-color);
   color: var(--light-color);
   background-image: url(/assets/imgs/Img-Bg.png) ;
   background-size: cover;
@@ -40,7 +40,7 @@ body{
   width: 100%;
   border: none;
   background: var(--primary-color);
-  color: var(--darr-color);
+  color: var(--dark-color);
   padding: 10px 20px;
   font-weight: 700;
   font-size: 14px;
@@ -93,7 +93,7 @@ body{
   border: 1px solid var(--light-color);
   border-radius: 4px;
   padding: 12px 20px;
-  background: var(--darr-color);
+  background: var(--dark-color);
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
