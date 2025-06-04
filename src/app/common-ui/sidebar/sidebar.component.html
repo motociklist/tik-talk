@@ -21,9 +21,9 @@
 <!-- <pre>{{ subscribers$ | async | json }}</pre> -->
 
 @for(profile of subscribers$ | async; track profile.id) {
- <app-subscribe-card
-  [profile]="profile">
-</app-subscribe-card>
+  <app-subscribe-card
+    [profile]="profile">
+  </app-subscribe-card>
 }
 
 <div class="mt20 to-subscribers">
@@ -39,6 +39,7 @@
 
 
 <footer class="sidebar__footer">
+
   @if (me(); as me) {
     @if (me.avatarUrl) {
       <img [src]="me.avatarUrl | imgUrl" alt="">
@@ -52,4 +53,5 @@
       <svg icon="settings" class="settings-btn"></svg>
     </a>
   }
+  
 </footer>

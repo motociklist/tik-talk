@@ -10,5 +10,5 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 })
 
 export class ProfileHeaderComponent {
-  profile = input<Profile>()
+  profile = input<Profile>();
 }
