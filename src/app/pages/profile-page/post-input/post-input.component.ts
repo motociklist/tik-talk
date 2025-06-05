@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './post-input.component.html',
   styleUrl: './post-input.component.scss'
 })
+
 export class PostInputComponent {
 
 }
