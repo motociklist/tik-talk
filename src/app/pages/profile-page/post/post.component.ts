@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })
+
 export class PostComponent {
 
 }
