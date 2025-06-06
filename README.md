@@ -23,11 +23,16 @@ ng build
 Login and password
 ``````````````````
 
+
+
 motociklist24
 
 YKZT9zxOjP
 
+
+
 ``````````````````
+
 
 Adds changes from the working directory
 ```
@@ -59,7 +64,6 @@ Show all branches
 ```
 git branch
 ```
-
 
 
 Pulling updates from GitHub
