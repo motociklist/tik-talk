@@ -105,3 +105,20 @@ body {
   font-weight: 500;
   line-height: 16px;
 }
+
+.tt-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.tt-form-input {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  display: block;
+}
