@@ -2,10 +2,16 @@
             
 </app-profile-header>
 
-<form class="profile-form">
+<form class="profile-form" [formGroup]="form">
     <div class="two-columns">
-        <label>
-            <span></span>
+        <label class="tt-form-label">
+            <span class="tt-form-label__text">Name</span>
+            <input type="text" class="tt-form-input" formControlName="firstName">
+        </label>
+        
+        <label class="tt-form-label">
+            <span class="tt-form-label__text">Lastname</span>
+            <input type="text" class="tt-form-input" formControlName="lastName">
         </label>
     </div>
 </form>
