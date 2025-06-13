@@ -8,7 +8,9 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
   templateUrl: './profile-card.component.html',
   styleUrl: './profile-card.component.scss'
 })
+
 export class ProfileCardComponent {
+
   @Input() profile!: Profile;
 
 }
