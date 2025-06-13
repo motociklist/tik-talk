@@ -6,11 +6,17 @@
 }
 
 .profile-form {
-    padding: 32px;
-    bottom: 1px solod var(--light-color);
-    background: var(--dark-color);
     display: grid;
     grid-gap: 20px;
+}
+
+.profile-form__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+    bottom: 1px solod var(--light-color);
+    height: calc(100dvh - (24px * 4));
 }
 
 .two-columns {
@@ -19,14 +25,4 @@
     grid-gap: 20px;
 }
 
-.profile-lable {
-
-
-    
-}
-
-.profile-input {
-    
-
-}
 
