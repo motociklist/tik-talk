@@ -2,6 +2,7 @@ import { Component, effect, inject } from '@angular/core';
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { FormBuilder,ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfileService } from '../../data/services/profile.service';
+import { firstValueFrom } from 'rxjs';
  
 
 @Component({
@@ -12,6 +13,7 @@ import { ProfileService } from '../../data/services/profile.service';
 })
 
 export class SettingsPageComponent {
+
   fb = inject(FormBuilder);
   profileService = inject(ProfileService);
 
@@ -19,20 +21,44 @@ export class SettingsPageComponent {
     firstName : ['', Validators.required],
     lastName : ['', Validators.required],
     username : [{value: '', disabled: true}, Validators.required],
-    desctiption : [''],
+    description : [''],
     stack : ['']
   })
 
   constructor() {
     effect(()=> {
       //@ts-ignore
-      this.form.patchValue(this.profileService.me())
+      this.form.patchValue({
+        ...this.profileService.me(),
+      //@ts-ignore
+        stack: this.mergeStack(this.profileService.me()?.stack)
     })
+   })
   }
 
   onSave() {
-    
+    this.form.markAllAsTouched()
+    this.form.updateValueAndValidity()
+
+    if (this.form.invalid) return;
+
+    //@ts-ignore
+    firstValueFrom(this.profileService.patchProfile({
+      ...this.form.value,
+      stack: this.splitStack(this.form.value.stack)
+    }))
+  }
+
+  splitStack(stack: any) {
+    if(!stack) return []
+    if(Array.isArray(stack)) return stack
+    return stack.split(',')
   }
  
- 
+  mergeStack(stack: any) {
+    if(!stack) return ''
+    if(Array.isArray(stack)) return stack.join(',')
+    return stack
+  }
+  
 }
