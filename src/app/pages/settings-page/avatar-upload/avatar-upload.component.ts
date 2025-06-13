@@ -12,8 +12,7 @@ export class AvatarUploadComponent {
 
   fileBrowserHandler(event: Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
-     const reader = new FileReader();
-
+    const reader = new FileReader();
 
     if(!file || !file.type.match('image')) return
 
