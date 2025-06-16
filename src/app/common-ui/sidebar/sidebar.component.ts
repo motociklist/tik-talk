@@ -20,7 +20,6 @@ export class SidebarComponent {
   subscribers$ = this.profileService.getSubscribersShortList();
   me = this.profileService.me;
 
- 
   menuItems = [{
     label: 'Моя страница',
     icon: 'home',
