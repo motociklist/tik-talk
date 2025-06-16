@@ -14,17 +14,12 @@ export class DndDirective {
   event.preventDefault();
   event.stopPropagation();
   this.fileover = true;
-
-  console.log(event.target);
-  
  }
 
   @HostListener('dragleave',['$event'])
   onDragLeave(event: DragEvent) {
   event.preventDefault();
   event.stopPropagation();
-
-  console.log(event.target);
   this.fileover = true;
  }
 
@@ -32,8 +27,6 @@ export class DndDirective {
   onDrop(event: DragEvent) {
   event.preventDefault();
   event.stopPropagation();
-
-  console.log(event.target);
   this.fileover = false;
   this.fileDropped.emit(event.dataTransfer?.files[0]);
  }
