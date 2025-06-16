@@ -4,7 +4,7 @@ import { SvgIconComponent } from '../../../common-ui/svg-icon/svg-icon.component
 
 @Component({
   selector: 'app-avatar-upload',
-  imports: [DndDirective,SvgIconComponent],
+  imports: [DndDirective],
   templateUrl: './avatar-upload.component.html',
   styleUrl: './avatar-upload.component.scss'
 })
