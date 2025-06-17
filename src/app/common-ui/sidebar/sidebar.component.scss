@@ -33,6 +33,7 @@
     align-self: center;
   }
 
+  &.active,
   &:hover,
   &:focus-visible {
     background-color: var(--dark-hover-color);
