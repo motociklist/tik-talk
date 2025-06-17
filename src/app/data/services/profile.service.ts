@@ -51,4 +51,13 @@ export class ProfileService {
       fd
     )
   }
+
+  filterProfils(params: Record<string, any>) {
+       return this.http.get<Pageble<Profile>>(
+        `${ this.baseApiUrl }account/accounts`,
+        {
+          params
+        }
+      )
+  }
 }
