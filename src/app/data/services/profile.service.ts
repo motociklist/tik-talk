@@ -11,7 +11,10 @@ import { map, tap } from 'rxjs';
 export class ProfileService {
   http = inject(HttpClient);
   baseApiUrl = 'https://icherniakov.ru/yt-course/';
-  me = signal<Profile | null>(null) ;
+
+  me = signal<Profile | null>(null);
+  filteretProfils = signal <Profile[]>([])
+
 
   getTestAccounts(){
     return this.http.get<Profile[]>(`${ this.baseApiUrl }account/test_accounts`);
@@ -58,6 +61,8 @@ export class ProfileService {
         {
           params
         }
+      ).pipe(
+        tap(res => this.filteretProfils.set(res.items))
       )
   }
 }

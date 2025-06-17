@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.component";
-import { Profile } from '../../data/interfaces/profile.interfase';
 import { ProfileService } from '../../data/services/profile.service';
 import { ProfileFiltersComponent } from "./profile-filters/profile-filters.component";
 
@@ -13,12 +12,6 @@ import { ProfileFiltersComponent } from "./profile-filters/profile-filters.compo
 
 export class SearchPageComponent {
   profileService = inject(ProfileService);
-  profiles: Profile[] = [];
+  profiles = this.profileService.filteretProfils
 
-  constructor() {
-    this.profileService.getTestAccounts()
-      .subscribe(val => {
-        this.profiles = val
-      })
-  }
 }
