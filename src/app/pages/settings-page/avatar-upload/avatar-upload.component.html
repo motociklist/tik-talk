@@ -9,13 +9,11 @@
         <span class="medium-text">Перетащи сюда</span>
     </div>
 
-
     <!-- FIXME  [(ngModel)]="avatar" -->
     <input  
         tabindex="-1"
         class="avatar-input"
         type="file"
-
         #fileDrop
         (change)="fileBrowserHandler($event)"
     >

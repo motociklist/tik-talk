@@ -14,10 +14,8 @@ import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 })
 
 export class SettingsPageComponent {
-
   fb = inject(FormBuilder);
   profileService = inject(ProfileService);
-
   @ViewChild(AvatarUploadComponent) avatarUplouder!: AvatarUploadComponent;
 
   form = this.fb.group({
@@ -29,11 +27,11 @@ export class SettingsPageComponent {
   })
 
   constructor() {
-    effect(()=> {
+    effect(() => {
       //@ts-ignore
       this.form.patchValue({
         ...this.profileService.me(),
-      //@ts-ignore
+        //@ts-ignore
         stack: this.mergeStack(this.profileService.me()?.stack)
     })
    })
@@ -57,15 +55,14 @@ export class SettingsPageComponent {
   }
 
   splitStack(stack: any) {
-    if(!stack) return []
-    if(Array.isArray(stack)) return stack
-    return stack.split(',')
+    if(!stack) return [];
+    if(Array.isArray(stack)) return stack;
+    return stack.split(',');
   }
  
   mergeStack(stack: any) {
-    if(!stack) return ''
-    if(Array.isArray(stack)) return stack.join(',')
-    return stack
+    if(!stack) return '';
+    if(Array.isArray(stack)) return stack.join(',');
+    return stack;
   }
-  
 }

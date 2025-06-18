@@ -8,6 +8,7 @@ import { ImgUrlPipe } from "../../../helpers/pipes/img-url.pipe";
   templateUrl: './subscribe-card.component.html',
   styleUrl: './subscribe-card.component.scss'
 })
+
 export class SubscribeCardComponent {
   @Input() profile!: Profile;
 }

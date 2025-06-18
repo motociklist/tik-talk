@@ -12,6 +12,5 @@ import { ProfileFiltersComponent } from "./profile-filters/profile-filters.compo
 
 export class SearchPageComponent {
   profileService = inject(ProfileService);
-  profiles = this.profileService.filteretProfils
-
+  profiles = this.profileService.filteretProfils;
 }

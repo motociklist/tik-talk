@@ -35,7 +35,6 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
                 )
             }
 
-
         if(req.url.includes('refresh')) return next(addToken(req, authService.token!))
 
         return isRefreshing$.pipe(
@@ -44,8 +43,6 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
                 return next(addToken(req, authService.token!))
             })
         )
-        // return next(addToken(req, authService.token!))
-
     }
 
     if (!token) return next(req);
@@ -63,5 +60,4 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
                 return throwError(error)
         })
     )
-
 }
