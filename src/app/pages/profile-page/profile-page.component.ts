@@ -19,7 +19,6 @@ import { PostFeedComponent } from "./post-feed/post-feed.component";
 export class ProfilePageComponent {
   profileService = inject(ProfileService);
   route = inject(ActivatedRoute);
-
   me$ = toObservable(this.profileService.me);
   subscribers$ = this.profileService.getSubscribersShortList(5);
 
@@ -27,7 +26,6 @@ export class ProfilePageComponent {
     .pipe(
       switchMap(({id}) => {
         if (id === 'me') return this.me$
-
         return this.profileService.getAccount(id)
       })
     )

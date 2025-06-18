@@ -12,7 +12,7 @@
         [routerLink]="[menuItem.link]"
         routerLinkActive="active"
       >
-          <svg class="icon-button" [icon]=menuItem.icon> </svg>
+          <svg class="icon-button" [icon]=menuItem.icon></svg>
           <span class="icon-text">{{ menuItem.label }}</span>
       </a>
     </li>
@@ -20,11 +20,11 @@
   </ul>
 </nav>
 
-<p class="medium-text mb20">Подписчики</p>
+<p class="medium-text mb20"> Подписчики </p>
 
 <!-- <pre>{{ subscribers$ | async | json }}</pre> -->
 
-@for(profile of subscribers$ | async; track profile.id) {
+@for (profile of subscribers$ | async; track profile.id) {
   <app-subscribe-card
     [profile]="profile">
   </app-subscribe-card>
@@ -37,7 +37,6 @@
   >
   Все подписчики
   </a>
-
   <!-- <svg icon="arrow" class="to-subscribers-icon"></svg> -->
 </div>
 

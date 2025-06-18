@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   http = inject(HttpClient);
   router = inject(Router);
@@ -27,39 +28,36 @@ export class AuthService {
   }
 
   login(payload: { username: string, password: string }) {
-    const fd = new FormData()
-
-    fd.append('username', payload.username)
-    fd.append('password', payload.password)
+    const fd = new FormData();
+    fd.append('username', payload.username);
+    fd.append('password', payload.password);
 
     return this.http.post<TokenResponse>(
       `${ this.baseApiUrl }token`,
-      fd,
-      ).pipe(
-        tap( val => {this.saveTokens(val)} )
-      )
+      fd)
+        .pipe(
+          tap( val => {this.saveTokens(val)} )
+        )
   }
 
   refreshAuthToken(){
      return this.http.post<TokenResponse>(
        `${ this.baseApiUrl }refresh`,
-      {
-        refresh_token: this.refreshToken
-      }
-     ).pipe(
-       tap( val => { this.saveTokens(val)} ),
-      catchError(err => {
-        this.logout()
-        return throwError(err)
-      })
-     )
+        {refresh_token: this.refreshToken})
+          .pipe(
+            tap( val => { this.saveTokens(val)} ),
+            catchError(err => {
+              this.logout()
+              return throwError(err)
+            })
+          )
   }
 
   logout() {
-    this.cookieService.deleteAll()
+    this.cookieService.deleteAll();
     this.token = null;
     this.refreshToken = null;
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   saveTokens(res : TokenResponse){
