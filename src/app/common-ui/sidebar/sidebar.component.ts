@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
+import {AuthService} from '../../auth/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,6 +18,7 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 
 export class SidebarComponent {
   profileService = inject(ProfileService);
+  authService = inject(AuthService);
   subscribers$ = this.profileService.getSubscribersShortList();
   me = this.profileService.me;
 
@@ -39,5 +41,9 @@ export class SidebarComponent {
 
   ngOnInit (){
     firstValueFrom(this.profileService.getMe());
+  }
+
+  logout() {
+    this.authService.logout()
   }
 }
