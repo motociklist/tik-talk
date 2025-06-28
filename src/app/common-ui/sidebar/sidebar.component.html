@@ -7,8 +7,8 @@
   <ul class="main-menu-list">
 
     <li *ngFor="let menuItem of menuItems">
-      <a 
-        class="menu-item" 
+      <a
+        class="menu-item"
         [routerLink]="[menuItem.link]"
         routerLinkActive="active"
       >
@@ -40,6 +40,7 @@
   <!-- <svg icon="arrow" class="to-subscribers-icon"></svg> -->
 </div>
 
+<button class="btn logout-btn" (click)="logout()"> Выйти </button>
 
 <footer class="sidebar__footer">
 
@@ -56,5 +57,5 @@
       <svg icon="settings" class="settings-btn"></svg>
     </a>
   }
-  
+
 </footer>
