@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { TokenResponse } from './auth.interface';
-import { catchError, tap, throwError } from 'rxjs';
+import { catchError, EMPTY, of, tap, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -36,7 +36,14 @@ export class AuthService {
       `${ this.baseApiUrl }token`,
       fd)
         .pipe(
-          tap( val => {this.saveTokens(val)} )
+          tap( val => {this.saveTokens(val)} ),
+          catchError((error) => {
+            if (error.status === 401) {
+              alert('Неверный логин или пароль');
+              return EMPTY;
+            }
+            return throwError(error);
+          })
         )
   }
 
