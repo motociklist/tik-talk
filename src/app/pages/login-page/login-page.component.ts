@@ -26,7 +26,7 @@ export class LoginPageComponent {
       this.authService.login(this.form.value).subscribe({
         next: (response) => {
           if (response) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['']);
           }
         },
         error: (error) => {
