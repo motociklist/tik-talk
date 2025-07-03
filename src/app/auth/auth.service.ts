@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { TokenResponse } from './auth.interface';
-import {catchError, EMPTY, of, tap, throwError} from 'rxjs';
+import { catchError, EMPTY, of, tap, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
