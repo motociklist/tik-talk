@@ -1,8 +1,9 @@
-import { Component, signal, model, OnInit, inject } from '@angular/core';
+import {Component, signal, OnInit, inject, OnDestroy} from '@angular/core';
 import { DndDirective } from '../../../common-ui/directives/dnd.directive';
 import { FormsModule } from '@angular/forms'
-// import { ProfileService } from '../../../data/services/profile.service';
-// import { toObservable } from '@angular/core/rxjs-interop';
+import { ProfileService } from '../../../data/services/profile.service';
+import { toObservable } from '@angular/core/rxjs-interop';
+import {Subject, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-avatar-upload',
@@ -10,17 +11,28 @@ import { FormsModule } from '@angular/forms'
   templateUrl: './avatar-upload.component.html',
   styleUrl: './avatar-upload.component.scss'
 })
-export class AvatarUploadComponent  {
-  // profileService = inject(ProfileService);
-  // me$ = toObservable(this.profileService.me);
- 
-  // ngOnInit() {
-  //   //@ts-ignore
-  //    this.me$.subscribe(r => this.preview.set(r?.toString()))
-  // }
-
-  preview = signal<string>('/assets/imgs/eyse.svg');
+export class AvatarUploadComponent implements OnInit, OnDestroy  {
+  profileService = inject(ProfileService);
+  me$ = toObservable(this.profileService.me);
   avatar:  File | null = null;
+  preview = signal<string>('/assets/imgs/eyse.svg');
+  API_URL = 'https://icherniakov.ru/yt-course/';
+  private destroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.me$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(me => {
+      if (me?.avatarUrl) {
+        this.preview.set(`${this.API_URL}${me.avatarUrl}`);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   fileBrowserHandler (event: Event) {
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -43,5 +55,4 @@ export class AvatarUploadComponent  {
     reader.readAsDataURL(file);
     this.avatar = file;
   }
-
 }
