@@ -16,8 +16,7 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
       })
     }
 
-    const refreshAndProcced = (
-        authService:AuthService,
+    const refreshAndProceed = (
         req:HttpRequest<any>,
         next:HttpHandlerFn) => {
             if(!isRefreshing$.value){
@@ -25,21 +24,19 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
                 return authService.refreshAuthToken()
                     .pipe(
                         switchMap(res => {
-
                             return next(addToken(req, res.access_token))
                                 .pipe(
                                     tap(() => isRefreshing$.next(false))
                                 )
-                        
                         })
                 )
             }
 
-        if(req.url.includes('refresh')) return next(addToken(req, authService.token!))
+        if (req.url.includes('refresh')) return next(addToken(req, authService.token!))
 
         return isRefreshing$.pipe(
             filter(isRefreshing => !isRefreshing),
-            switchMap(res => {
+            switchMap(() => {
                 return next(addToken(req, authService.token!))
             })
         )
@@ -48,14 +45,14 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
     if (!token) return next(req);
 
     if (isRefreshing$.value) {
-        return refreshAndProcced(authService, req, next)
+        return refreshAndProceed(req, next)
     }
 
     return next(addToken(req, token))
         .pipe(
             catchError((error) => {
                 if(error.status === 403){
-                    return refreshAndProcced(authService, req, next)
+                    return refreshAndProceed(req, next)
                 }
                 return throwError(error)
         })
