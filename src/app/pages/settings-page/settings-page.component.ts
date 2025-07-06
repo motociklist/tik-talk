@@ -4,7 +4,8 @@ import { FormBuilder,ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
 import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
- 
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-settings-page',
@@ -16,6 +17,7 @@ import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 export class SettingsPageComponent {
   fb = inject(FormBuilder);
   profileService = inject(ProfileService);
+  router = inject(Router);
   @ViewChild(AvatarUploadComponent) avatarUplouder!: AvatarUploadComponent;
 
   form = this.fb.group({
@@ -46,12 +48,14 @@ export class SettingsPageComponent {
     if (this.avatarUplouder.avatar) {
       firstValueFrom(this.profileService.uploadAvatar(this.avatarUplouder.avatar))
     }
-  
+
     //@ts-ignore
     firstValueFrom(this.profileService.patchProfile({
       ...this.form.value,
       stack: this.splitStack(this.form.value.stack)
     }))
+
+    this.router.navigate(['']);
   }
 
   splitStack(stack: any) {
@@ -59,7 +63,7 @@ export class SettingsPageComponent {
     if(Array.isArray(stack)) return stack;
     return stack.split(',');
   }
- 
+
   mergeStack(stack: any) {
     if(!stack) return '';
     if(Array.isArray(stack)) return stack.join(',');
