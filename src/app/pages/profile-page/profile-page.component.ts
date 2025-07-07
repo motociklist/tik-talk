@@ -19,7 +19,7 @@ export class ProfilePageComponent {
   profileService = inject(ProfileService);
   route = inject(ActivatedRoute);
   me$ =this.profileService.getMe();
-  subscribers$ = this.profileService.getSubscribersShortList(5);
+  subscribers$ = this.profileService.getSubscribersShortList(10);
 
   profile$ = this.route.params
     .pipe(
