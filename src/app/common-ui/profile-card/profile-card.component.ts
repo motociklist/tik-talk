@@ -13,8 +13,7 @@ export class ProfileCardComponent {
 
   @Input() profile!: Profile;
 
-  Sov(profile: Profile) {
-
+  Sov() {
     console.log(this.profile)
   }
 }
