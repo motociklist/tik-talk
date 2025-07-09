@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Profile } from '../interfaces/profile.interfase';
-import { Pageble } from '../interfaces/pagable.interfase';
+import { Pageable } from '../interfaces/pageable.interface';
 import { map, tap } from 'rxjs';
 
 @Injectable({
@@ -19,10 +19,27 @@ export class ProfileService {
   }
 
   getSubscribersShortList(subsAmount = 3){
-    return this.http.get<Pageble<Profile>>(`${ this.baseApiUrl }account/subscribers/`)
+    return this.http.get<Pageable<Profile>>(`${ this.baseApiUrl }account/subscribers/`)
       .pipe(
         map(res => res.items.slice(0,subsAmount))
       )
+  }
+
+  postSubscriber(id: number){
+    return this.http.post<Profile>(
+      `${ this.baseApiUrl }account/subscribe/${id}`,
+     null
+    );
+  }
+
+  deleteSubscriber(id: number){
+    return this.http.delete<Profile>(
+      `${ this.baseApiUrl }account/subscribe/${id}`
+    );
+  }
+
+  getSubscriptionsList(){
+    return this.http.get<Profile>(`${ this.baseApiUrl }account/subscriptions/`)
   }
 
   getMe(){
@@ -54,7 +71,7 @@ export class ProfileService {
   }
 
   filterProfils(params: Record<string, any>) {
-       return this.http.get<Pageble<Profile>>(
+       return this.http.get<Pageable<Profile>>(
         `${ this.baseApiUrl }account/accounts`,
         {params})
           .pipe(

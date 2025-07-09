@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Profile } from '../../data/interfaces/profile.interfase';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
+import { ProfileService } from '../../data/services/profile.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-profile-card',
@@ -10,11 +12,14 @@ import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 })
 
 export class ProfileCardComponent {
-
+  profileService = inject(ProfileService);
   @Input() profile!: Profile;
 
+  Subscribe() {
+    firstValueFrom(this.profileService.postSubscriber(this.profile.id))
+  }
 
-  Sov() {
-    console.log(this.profile)
+  Unsubscribe() {
+    firstValueFrom(this.profileService.deleteSubscriber(this.profile.id))
   }
 }

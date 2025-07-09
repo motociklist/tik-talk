@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from '../../data/services/profile.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -15,11 +15,17 @@ import { PostFeedComponent } from "./post-feed/post-feed.component";
   styleUrl: './profile-page.component.scss'
 })
 
-export class ProfilePageComponent {
+export class ProfilePageComponent implements OnInit{
   profileService = inject(ProfileService);
   route = inject(ActivatedRoute);
-  me$ =this.profileService.getMe();
+  me$ = this.profileService.getMe();
   subscribers$ = this.profileService.getSubscribersShortList(10);
+  subscribersList$ = this.profileService.getSubscriptionsList()
+
+  ngOnInit() {
+    this.me$.subscribe((r) => console.log(r))
+    this.subscribersList$.subscribe((r) => console.log(r))
+  }
 
   profile$ = this.route.params
     .pipe(
