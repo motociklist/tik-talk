@@ -25,6 +25,13 @@ export class ProfileService {
       )
   }
 
+  getSubscriptions(id: number){
+    return this.http.get<Pageable<Profile>>(`${ this.baseApiUrl }account/subscriptions/${id}`)
+      .pipe(
+        map(res => res.items)
+      )
+  }
+
   postSubscriber(id: number){
     return this.http.post<Profile>(
       `${ this.baseApiUrl }account/subscribe/${id}`,
@@ -38,8 +45,10 @@ export class ProfileService {
     );
   }
 
-  getSubscriptionsList(){
-    return this.http.get<Profile>(`${ this.baseApiUrl }account/subscriptions/`)
+  getSubscriptionsListMe(){
+    return this.http.get<Pageable<Profile>>(`${ this.baseApiUrl }account/subscriptions/`).pipe(
+      map(res => res.items)
+    )
   }
 
   getMe(){
@@ -70,7 +79,7 @@ export class ProfileService {
     )
   }
 
-  filterProfils(params: Record<string, any>) {
+  filterProfiles(params: Record<string, any>) {
        return this.http.get<Pageable<Profile>>(
         `${ this.baseApiUrl }account/accounts`,
         {params})
