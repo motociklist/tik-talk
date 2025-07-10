@@ -8,6 +8,7 @@ import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
 
+
 @Component({
   selector: 'app-profile-page',
   imports: [ProfileHeaderComponent, AsyncPipe, SvgIconComponent, RouterModule, ImgUrlPipe, PostFeedComponent],
@@ -20,18 +21,26 @@ export class ProfilePageComponent implements OnInit{
   route = inject(ActivatedRoute);
   me$ = this.profileService.getMe();
   subscribers$ = this.profileService.getSubscribersShortList(10);
-  subscribersList$ = this.profileService.getSubscriptionsList()
+  subscribersList$ = this.profileService.getSubscriptions(500);
+  subscribersListMe$ = this.profileService.getSubscriptionsListMe();
+  editMode = true;
 
   ngOnInit() {
-    this.me$.subscribe((r) => console.log(r))
-    this.subscribersList$.subscribe((r) => console.log(r))
+    this.profile$.subscribe((r) => console.log(r))
+    this.subscribers$.subscribe((r) => console.log(r))
   }
 
   profile$ = this.route.params
     .pipe(
       switchMap(({id}) => {
-        if (id === 'me') return this.me$
-        return this.profileService.getAccount(id)
+        //this.subscribersList$ = this.profileService.getSubscriptions(id);
+        if (id === 'me') {
+          this.editMode = true;
+          return this.me$
+        } else {
+          this.editMode = false;
+          return this.profileService.getAccount(id)
+        }
       })
     )
 }

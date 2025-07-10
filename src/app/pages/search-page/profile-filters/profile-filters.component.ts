@@ -28,7 +28,7 @@ export class ProfileFiltersComponent implements OnDestroy {
         startWith({}), //fix
         debounceTime(300),
         switchMap(fromValue => {
-          return this.profileServis.filterProfils(fromValue)
+          return this.profileServis.filterProfiles(fromValue)
         }),
         takeUntilDestroyed() //ngOnDestroy
       )
