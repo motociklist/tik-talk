@@ -18,7 +18,7 @@
         <div>
             <h3 class="h6 mb16"> Подписчики </h3>
             <div class="subscribers-wrapper mb32">
-                @for (subscriber of  subscribers$ | async; track subscriber.id) {
+                @for (subscriber of  subscribersList$ | async; track subscriber.id) {
                     <a class="subscriber-avarat-btn" [routerLink]="['/profile', subscriber.id]">
                         <img [src]="subscriber.avatarUrl | imgUrl" alt="">
                     </a>

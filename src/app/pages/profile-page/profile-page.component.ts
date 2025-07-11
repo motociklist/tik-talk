@@ -20,20 +20,14 @@ export class ProfilePageComponent implements OnInit{
   profileService = inject(ProfileService);
   route = inject(ActivatedRoute);
   me$ = this.profileService.getMe();
-  subscribers$ = this.profileService.getSubscribersShortList(10);
-  subscribersList$ = this.profileService.getSubscriptions(500);
   subscribersListMe$ = this.profileService.getSubscriptionsListMe();
   editMode = true;
 
-  ngOnInit() {
-    this.profile$.subscribe((r) => console.log(r))
-    this.subscribers$.subscribe((r) => console.log(r))
-  }
+  ngOnInit() {}
 
   profile$ = this.route.params
     .pipe(
       switchMap(({id}) => {
-        //this.subscribersList$ = this.profileService.getSubscriptions(id);
         if (id === 'me') {
           this.editMode = true;
           return this.me$
@@ -43,4 +37,14 @@ export class ProfilePageComponent implements OnInit{
         }
       })
     )
+
+  subscribersList$ = this.route.params.pipe(
+    switchMap(({ id }) => {
+      if (id === 'me') {
+        return this.subscribersListMe$;
+      } else {
+        return this.profileService.getSubscriptions(id);
+      }
+    })
+  )
 }
