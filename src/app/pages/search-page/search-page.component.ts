@@ -15,5 +15,4 @@ export class SearchPageComponent  {
 
   profiles = this.profileService.filteretProfils;
 
-
 }
