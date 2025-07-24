@@ -30,7 +30,7 @@ export class SidebarComponent {
   {
     label: 'Чаты',
     icon: 'direct',
-    link: 'chats'
+    link: 'profile/me'
   },
   {
     label: 'Поиск',
