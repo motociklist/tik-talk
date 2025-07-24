@@ -19,7 +19,7 @@ import { AuthService } from '../../auth/auth.service';
 export class SidebarComponent {
   profileService = inject(ProfileService);
   authService = inject(AuthService);
-  subscribers$ = this.profileService.getSubscribersShortList();
+  subscribers$ = this.profileService.getSubscriptionsListMe();
   me = this.profileService.me;
 
   menuItems = [{
