@@ -24,10 +24,11 @@
       }
     </div>
 
-    <div class="profile-cart__action-btns">
-      <button (click)="Subscribe()"  [disabled]="isSubscribed" class="btn"> Подписаться </button>
-      <button (click)="Unsubscribe()" [disabled]="!isSubscribed" class="btn"> Отписаться </button>
-    </div>
+    @if(isSubscribed) {
+      <button (click)="Subscribe()"  class="btn mt20 btn-margin"> Подписаться </button>
+    } @else {
+      <button (click)="Unsubscribe()"  class="btn mt20 btn-unsubscribe"> Отписаться </button>
+    }
 
   </div>
 }
