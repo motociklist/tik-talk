@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from '../../data/services/profile.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { firstValueFrom, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
+import { Profile } from '../../data/interfaces/profile.interfase';
 
 
 @Component({
@@ -22,8 +23,19 @@ export class ProfilePageComponent implements OnInit{
   me$ = this.profileService.getMe();
   subscribersListMe$ = this.profileService.getSubscriptionsListMe();
   editMode = true;
+  // @ts-ignore
+  currentProfile: Profile;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.profile$.subscribe(profile => {
+      this.currentProfile = profile;
+      console.log(this.currentProfile);
+    })
+
+    // this.subscribersList$.subscribe(subscribers => {
+    //   console.log(subscribers)
+    // })
+  }
 
   profile$ = this.route.params
     .pipe(
@@ -37,6 +49,20 @@ export class ProfilePageComponent implements OnInit{
         }
       })
     )
+
+  Subscribe() {
+    console.log(this.currentProfile)
+    firstValueFrom(this.profileService.postSubscriber(this.currentProfile.id))
+    // this.currentProfile = {
+    //   ...this.currentProfile,
+    //   isSubscribed: true
+    // }
+  }
+
+  Unsubscribe() {
+    console.log(this.currentProfile)
+    firstValueFrom(this.profileService.deleteSubscriber(this.currentProfile.id))
+  }
 
   subscribersList$ = this.route.params.pipe(
     switchMap(({ id }) => {
