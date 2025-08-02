@@ -53,7 +53,7 @@ export class ProfilePageComponent implements OnInit{
   Subscribe() {
     console.log(this.currentProfile)
     firstValueFrom(this.profileService.postSubscriber(this.currentProfile.id))
-    
+
     // this.currentProfile = {
     //   ...this.currentProfile,
     //   isSubscribed: true
