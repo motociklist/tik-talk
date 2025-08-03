@@ -24,11 +24,9 @@
       }
     </div>
 
-    @if (isSubscribed) {
-      <button (click)="Unsubscribe()"  class="btn mt20 btn-unsubscribe"> Отписаться </button>
-    } @else {
-      <button (click)="Subscribe()"  class="btn mt20 btn-margin"> Подписаться </button>
-    }
+    <div>
+      <button [routerLink]="['/profile', profile.id]" class="btn mt20 btn-margin">Просмотр</button>
+    </div>
 
   </div>
 }
