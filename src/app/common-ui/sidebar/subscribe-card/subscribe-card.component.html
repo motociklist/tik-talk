@@ -1,5 +1,6 @@
 <img
   class="subscriber-avatar"
+  [routerLink]="['/profile', profile.id]"
   [src]="profile.avatarUrl | imgUrl"
   [alt]="profile.lastName"
 >
