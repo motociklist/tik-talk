@@ -7,7 +7,6 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
-import { Profile } from '../../data/interfaces/profile.interfase';
 
 
 @Component({
@@ -32,19 +31,6 @@ export class ProfilePageComponent implements OnInit{
     })
   }
 
-  profile$ = this.route.params
-    .pipe(
-      switchMap(({id}) => {
-        if (id === 'me') {
-          this.editMode = true;
-          return this.me$
-        } else {
-          this.editMode = false;
-          return this.profileService.getAccount(id)
-        }
-      })
-    )
-
   Subscribe() {
     if (!this.currentProfile) return;
     this.profileService.postSubscriber(this.currentProfile.id).subscribe(() => {
@@ -64,6 +50,19 @@ export class ProfilePageComponent implements OnInit{
       };
     });
   }
+
+  profile$ = this.route.params
+    .pipe(
+      switchMap(({id}) => {
+        if (id === 'me') {
+          this.editMode = true;
+          return this.me$
+        } else {
+          this.editMode = false;
+          return this.profileService.getAccount(id)
+        }
+      })
+    )
 
   subscribersList$ = this.route.params.pipe(
     switchMap(({ id }) => {
