@@ -11,9 +11,14 @@
   height: auto;
 }
 
+.form-login {
+  max-width: 100%;
+  height: auto;
+}
+
 .login-form,
 .big-logo {
-  place-self: center;
+ // place-self: center;
 }
 
 .password-input {
