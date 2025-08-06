@@ -35,7 +35,7 @@ export class SidebarComponent implements OnInit {
   {
     label: 'Чаты',
     icon: 'direct',
-    link: 'profile/me'
+    link: 'chat'
   },
   {
     label: 'Поиск',
