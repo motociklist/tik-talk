@@ -3,7 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Profile } from '../interfaces/profile.interfase';
 import { Pageable } from '../interfaces/pageable.interface';
 import { map, tap } from 'rxjs';
-import {Chat} from '../interfaces/chat.interface';
+import { Chat } from '../interfaces/chat.interface';
 
 @Injectable({
   providedIn: 'root'

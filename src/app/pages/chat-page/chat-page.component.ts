@@ -1,7 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {ProfileService} from '../../data/services/profile.service';
-import {AsyncPipe} from '@angular/common';
-import {ProfileCardComponent} from '../../common-ui/profile-card/profile-card.component';
+import { Component, inject, OnInit } from '@angular/core';
+import { ProfileService } from '../../data/services/profile.service';
+import { AsyncPipe } from '@angular/common';
+import { ProfileCardComponent } from '../../common-ui/profile-card/profile-card.component';
 
 
 @Component({
