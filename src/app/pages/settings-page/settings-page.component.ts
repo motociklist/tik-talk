@@ -1,5 +1,4 @@
 import { Component, effect, inject, ViewChild } from '@angular/core';
-import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { FormBuilder,ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProfileService } from '../../data/services/profile.service';
 import { firstValueFrom } from 'rxjs';
@@ -10,7 +9,7 @@ import { Router } from '@angular/router';
   selector: 'app-settings-page',
   templateUrl: './settings-page.component.html',
   styleUrl: './settings-page.component.scss',
-  imports: [ReactiveFormsModule, ProfileHeaderComponent, AvatarUploadComponent]
+  imports: [ReactiveFormsModule, AvatarUploadComponent]
 })
 
 export class SettingsPageComponent {
