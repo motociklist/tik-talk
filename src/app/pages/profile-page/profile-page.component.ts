@@ -7,6 +7,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
+import { Profile } from '../../data/interfaces/profile.interfase';
 
 
 @Component({

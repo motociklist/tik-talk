@@ -1,6 +1,3 @@
-<app-profile-header>       
-</app-profile-header>
-
 <form class="profile-form__wrapper" [formGroup]="form">
     <div class="profile-form">
         <div class="two-columns">
@@ -8,7 +5,7 @@
                 <span class="tt-form-label__text"> Name </span>
                 <input type="text" class="tt-form-input" formControlName="firstName">
             </label>
-            
+
             <label class="tt-form-label">
                 <span class="tt-form-label__text"> Lastname </span>
                 <input type="text" class="tt-form-input" formControlName="lastName">
@@ -22,8 +19,8 @@
 
         <label class="tt-form-label">
                 <span class="tt-form-label__text"> About me </span>
-                <textarea 
-                    formControlName="description" 
+                <textarea
+                    formControlName="description"
                     class="tt-form-input tt-textarea"
                     rows="4">
                 </textarea>
@@ -33,7 +30,7 @@
                 <span class="tt-form-label__text"> Avatar </span>
                 <app-avatar-upload></app-avatar-upload>
         </label>
-      
+
         <label class="tt-form-label">
                 <span class="tt-form-label__text"> Stack </span>
                 <input type="text" class="tt-form-input" formControlName="stack">

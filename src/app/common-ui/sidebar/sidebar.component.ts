@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 import { CommonModule } from '@angular/common';
 import { SubscribeCardComponent } from "./subscribe-card/subscribe-card.component";
 import { RouterModule } from '@angular/router';
 import { ProfileService } from '../../data/services/profile.service';
-import { firstValueFrom } from 'rxjs';
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { AuthService } from '../../auth/auth.service';
 
@@ -21,6 +20,11 @@ export class SidebarComponent {
   authService = inject(AuthService);
   subscribers$ = this.profileService.getSubscriptionsListMe();
   me = this.profileService.me;
+  showSubscribers = signal(false);
+
+  toggleSubscribers() {
+    this.showSubscribers.update(value => !value);
+  }
 
   menuItems = [{
     label: 'Моя страница',
@@ -40,7 +44,7 @@ export class SidebarComponent {
 ]
 
   ngOnInit (){
-    firstValueFrom(this.profileService.getMe());
+    //firstValueFrom(this.profileService.getMe());
   }
 
   logout() {
