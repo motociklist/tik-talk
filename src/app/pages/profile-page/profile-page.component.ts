@@ -29,7 +29,7 @@ export class ProfilePageComponent implements OnInit{
   ngOnInit() {
     this.profile$.subscribe(profile => {
       this.currentProfile = profile;
-  //    console.log(this.currentProfile)
+      console.log(this.currentProfile)
     })
   }
 
