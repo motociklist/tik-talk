@@ -20,26 +20,21 @@
   </ul>
 </nav>
 
-<p class="medium-text mb20"> Подписчики </p>
-
-@for (profile of subscribers$ | async; track profile.id) {
-  <app-subscribe-card
-    [profile]="profile">
-  </app-subscribe-card>
-}
-
 <div class="mt20 to-subscribers">
-<!--  [routerLink]="['/subscribers']"-->
-  <a
-    [routerLink]="['']"
-    class="to-subscribers-link medium-text"
-  >
-  Все подписчики
-  </a>
-  <!-- <svg icon="arrow" class="to-subscribers-icon"></svg> -->
+  <button (click)="toggleSubscribers()"
+          class="to-subscribers-btn medium-text"
+          [ngClass]="showSubscribers() ? 'btn-hide' : 'btn-subscribers'">
+    {{ showSubscribers() ? 'Скрыть' : 'Все подписчики' }}
+  </button>
 </div>
 
-<button class="btn logout-btn" (click)="logout()"> Выйти </button>
+@if (showSubscribers()) {
+  @for (profile of subscribers$ | async; track profile.id) {
+    <app-subscribe-card
+      [profile]="profile">
+    </app-subscribe-card>
+  }
+}
 
 <footer class="sidebar__footer">
 
@@ -50,7 +45,11 @@
        <img src="/assets/imgs/eyse.svg" alt="">
     }
 
+
+
     <div class="medium-text username-text">{{ me.username }}</div>
+
+    <button class="to-subscribers-btn btn-logout" (click)="logout()"> Выйти </button>
 
     <a [routerLink]="['settings']" class="settings-btn">
       <svg icon="settings" class="settings-btn"></svg>

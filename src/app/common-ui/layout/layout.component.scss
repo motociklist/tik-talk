@@ -1,9 +1,17 @@
 :host {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  height: 100dvh; 
+  grid-template-columns: 330px 1fr;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+app-sidebar {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .workspace {
   padding: 24px;
+  overflow-y: auto;
 }
