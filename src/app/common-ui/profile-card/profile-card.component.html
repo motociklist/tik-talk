@@ -10,7 +10,6 @@
         <strong class="h6">{{ profile.firstName }} {{profile.lastName}}</strong>
         <span class="subtitle">{{profile.username}}</span>
       </div>
-
     </div>
 
     <div class="profile-card__desctiption"> Райан Гослинг
@@ -23,9 +22,15 @@
       }
     </div>
 
-    <div>
-      <button [routerLink]="['/profile', profile.id]" class="btn mt20 btn-margin">Просмотр</button>
-    </div>
+    @if (chatMode) {
+      <div>
+        <button class="btn mt20 btn-margin">Открыть чат</button>
+      </div>
+    } @else {
+      <div>
+        <button [routerLink]="['/profile', profile.id]" class="btn mt20 btn-margin">Просмотр</button>
+      </div>
+    }
 
   </div>
 }
