@@ -1,0 +1,18 @@
+# Node.js
+node_modules/
+dist/
+build/
+coverage/
+
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+*.log
+
+.vscode/
+.idea/
+*.swp
+
+*.min.js
+*.min.css
+*.bundle.js

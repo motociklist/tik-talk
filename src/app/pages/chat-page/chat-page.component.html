@@ -1,9 +1,7 @@
 <div class="chat-title">Список чатов</div>
 
 <div class="chat-list">
-  @for ( chat of chats$ | async ; track chat.id) {
-    <app-profile-card [profile]="chat.userFrom"
-                      [chatMode] = "true"
-    ></app-profile-card>
-  }
+    @for (chat of chats$ | async; track chat.id) {
+        <app-profile-card [profile]="chat.userFrom" [chatMode]="true"></app-profile-card>
+    }
 </div>

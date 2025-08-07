@@ -2,46 +2,45 @@
     <header class="profile-page__header">
         <app-profile-header [profile]="profile"></app-profile-header>
 
-      @if (editMode) {
-        <a class="btn to-setting-btn" [routerLink]="['/settings']">
-          Редактировать
-          <svg icon="settings" class="to-settings-icon"></svg>
-        </a>
-      } @else {
-        <a class="btn to-subscribe-btn"
-          [ngClass]="{ 'btn-unsubscribe': currentProfile?.isSubscribed }"
-          (click)="currentProfile?.isSubscribed ? Unsubscribe() : Subscribe()">
-          {{ currentProfile?.isSubscribed ? 'Отписаться' : 'Подписаться' }}
-        </a>
-      }
-
+        @if (editMode) {
+            <a class="btn to-setting-btn" [routerLink]="['/settings']">
+                Редактировать
+                <svg icon="settings" class="to-settings-icon"></svg>
+            </a>
+        } @else {
+            <a
+                class="btn to-subscribe-btn"
+                [ngClass]="{ 'btn-unsubscribe': currentProfile?.isSubscribed }"
+                (click)="currentProfile?.isSubscribed ? Unsubscribe() : Subscribe()"
+            >
+                {{ currentProfile?.isSubscribed ? 'Отписаться' : 'Подписаться' }}
+            </a>
+        }
     </header>
 
     <main class="profile-page__body">
-
-       <app-post-feed></app-post-feed>
+        <app-post-feed></app-post-feed>
 
         <div>
-            <h3 class="h6 mb16"> Подписчики </h3>
+            <h3 class="h6 mb16">Подписчики</h3>
             <div class="subscribers-wrapper mb32">
-                @for (subscriber of  subscribersList$ | async; track subscriber.id) {
+                @for (subscriber of subscribersList$ | async; track subscriber.id) {
                     <a class="subscriber-avarat-btn" [routerLink]="['/profile', subscriber.id]">
-                        <img [src]="subscriber.avatarUrl | imgUrl" alt="">
+                        <img [src]="subscriber.avatarUrl | imgUrl" alt="" />
                     </a>
                 }
                 <a class="to-subscribers-search" [routerLink]="['/search']"></a>
             </div>
 
-            <h3 class="h6 mb16"> Навыки </h3>
+            <h3 class="h6 mb16">Навыки</h3>
             <div class="stack-wrapper mb32">
                 @for (skill of profile.stack; track skill) {
                     <div class="skill-tag">{{ skill }}</div>
                 }
             </div>
 
-            <h3 class="h6 mb16"> О себе </h3>
-            <p class="medium-text"> {{profile.description}} </p>
+            <h3 class="h6 mb16">О себе</h3>
+            <p class="medium-text">{{ profile.description }}</p>
         </div>
-
     </main>
 }

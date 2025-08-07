@@ -79,4 +79,14 @@ git status
 gir diff
 ```
 
+add prittierrc
+
+```
+npx install --seve-dev prettier
+npx prettier --write .
+
+```
+
+
+git checkout -- .
 

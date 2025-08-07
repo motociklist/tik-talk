@@ -8,20 +8,20 @@ import { SettingsPageComponent } from './pages/settings-page/settings-page.compo
 import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 
 export const routes: Routes = [
-
-  {
-    path: '', component: LayoutComponent,
-      children: [
-          { path: '', redirectTo: 'profile/me', pathMatch: 'full'},
-          { path: 'search', component: SearchPageComponent },
-          { path: 'profile/:id', component: ProfilePageComponent },
-          { path: 'settings', component: SettingsPageComponent },
-          { path: 'chat', component: ChatPageComponent }
+    {
+        path: '',
+        component: LayoutComponent,
+        children: [
+            { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
+            { path: 'search', component: SearchPageComponent },
+            { path: 'profile/:id', component: ProfilePageComponent },
+            { path: 'settings', component: SettingsPageComponent },
+            { path: 'chat', component: ChatPageComponent },
         ],
-    canActivate: [canActivateAuth]
-  },
-  {
-    path: 'login', component: LoginPageComponent
-  },
-
+        canActivate: [canActivateAuth],
+    },
+    {
+        path: 'login',
+        component: LoginPageComponent,
+    },
 ];
