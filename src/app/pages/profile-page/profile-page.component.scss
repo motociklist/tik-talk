@@ -14,8 +14,8 @@
 }
 
 .to-subscribe-btn {
-  width: 190px;
-  text-align: center;
+    width: 190px;
+    text-align: center;
 }
 
 .to-settings-icon {
@@ -39,12 +39,14 @@
     width: 36px;
     height: 36px;
     margin: 4px;
+
     img {
         width: 36px;
         height: 36px;
         border-radius: 50%;
     }
 }
+
 .to-subscribers-search {
     border-radius: 50%;
     background: var(--light-color);
@@ -54,7 +56,7 @@
 
     &:before,
     &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 1px;
         height: 8px;
@@ -68,7 +70,7 @@
     }
 
     &:after {
-        transform: translateY(-50%) translateX(-50%)  rotate(90deg);
+        transform: translateY(-50%) translateX(-50%) rotate(90deg);
     }
 }
 

@@ -3,29 +3,27 @@ import { ProfileService } from '../../data/services/profile.service';
 import { AsyncPipe } from '@angular/common';
 import { ProfileCardComponent } from '../../common-ui/profile-card/profile-card.component';
 
-
 @Component({
-  selector: 'app-chat-page',
-  templateUrl: './chat-page.component.html',
-  imports: [
-    AsyncPipe,
-    ProfileCardComponent
-  ],
-  styleUrl: './chat-page.component.scss'
+    selector: 'app-chat-page',
+    templateUrl: './chat-page.component.html',
+    imports: [ProfileCardComponent, AsyncPipe],
+    styleUrl: './chat-page.component.scss',
 })
 
+
 export class ChatPageComponent implements OnInit {
-  profileService = inject(ProfileService);
-  chats$ = this.profileService.getChatMe();
+    profileService = inject(ProfileService);
+    chats$ = this.profileService.getChatMe();
 
-  ngOnInit() {
-    this.chats$.subscribe(l => {
-      console.log(l)});
-  }
+    ngOnInit() {
+        this.chats$.subscribe(l => {
+            console.log(l);
+        });
+    }
 
-  onPush() {
-    //firstValueFrom( this.profileService.getChatMe());
-    // firstValueFrom(this.profileService.getChatId('210'));
-    // firstValueFrom(this.profileService.postChatId('124'));
-  }
+    onPush() {
+        //firstValueFrom( this.profileService.getChatMe());
+        // firstValueFrom(this.profileService.getChatId('210'));
+        // firstValueFrom(this.profileService.postChatId('124'));
+    }
 }

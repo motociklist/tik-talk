@@ -1,57 +1,46 @@
-<img src="/assets/imgs/logo-small.svg"
-     alt=""
-     class="ml16 mb20"
->
+<img src="/assets/imgs/logo-small.svg" alt="" class="ml16 mb20" />
 
 <nav class="mb20">
-  <ul class="main-menu-list">
-
-    <li *ngFor="let menuItem of menuItems">
-      <a
-        class="menu-item"
-        [routerLink]="[menuItem.link]"
-        routerLinkActive="active"
-      >
-          <svg class="icon-button" [icon]=menuItem.icon></svg>
-          <span class="icon-text">{{ menuItem.label }}</span>
-      </a>
-    </li>
-
-  </ul>
+    <ul class="main-menu-list">
+        <li *ngFor="let menuItem of menuItems">
+            <a class="menu-item" [routerLink]="[menuItem.link]" routerLinkActive="active">
+                <svg class="icon-button" [icon]="menuItem.icon"></svg>
+                <span class="icon-text">{{ menuItem.label }}</span>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <div class="mt20 to-subscribers">
-  <button (click)="toggleSubscribers()"
-          class="to-subscribers-btn medium-text"
-          [ngClass]="showSubscribers() ? 'btn-hide' : 'btn-subscribers'">
-    {{ showSubscribers() ? 'Скрыть' : 'Все подписчики' }}
-  </button>
+    <button
+        (click)="toggleSubscribers()"
+        class="to-subscribers-btn medium-text"
+        [ngClass]="showSubscribers() ? 'btn-hide' : 'btn-subscribers'"
+    >
+        {{ showSubscribers() ? 'Скрыть' : 'Все подписчики' }}
+    </button>
 </div>
 
 @if (showSubscribers()) {
-  @for (profile of subscribers$ | async; track profile.id) {
-    <app-subscribe-card
-      [profile]="profile">
-    </app-subscribe-card>
-  }
+    @for (profile of subscribers$ | async; track profile.id) {
+        <app-subscribe-card [profile]="profile"> </app-subscribe-card>
+    }
 }
 
 <footer class="sidebar__footer">
+    @if (me(); as me) {
+        @if (me.avatarUrl) {
+            <img [src]="me.avatarUrl | imgUrl" alt="" />
+        } @else {
+            <img src="/assets/imgs/eyse.svg" alt="" />
+        }
 
-  @if (me(); as me) {
-    @if (me.avatarUrl) {
-      <img [src]="me.avatarUrl | imgUrl" alt="">
-    } @else {
-       <img src="/assets/imgs/eyse.svg" alt="">
+        <div class="medium-text username-text">{{ me.username }}</div>
+
+        <button class="to-subscribers-btn btn-logout" (click)="logout()">Выйти</button>
+
+        <a [routerLink]="['settings']" class="settings-btn">
+            <svg icon="settings" class="settings-btn"></svg>
+        </a>
     }
-
-    <div class="medium-text username-text">{{ me.username }}</div>
-
-    <button class="to-subscribers-btn btn-logout" (click)="logout()"> Выйти </button>
-
-    <a [routerLink]="['settings']" class="settings-btn">
-      <svg icon="settings" class="settings-btn"></svg>
-    </a>
-  }
-
 </footer>

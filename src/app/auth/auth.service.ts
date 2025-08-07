@@ -6,69 +6,66 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-
 export class AuthService {
-  http = inject(HttpClient);
-  router = inject(Router);
-  cookieService = inject(CookieService);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/auth/';
-  token: string | null = null;
-  refreshToken: string | null = null;
+    http = inject(HttpClient);
+    router = inject(Router);
+    cookieService = inject(CookieService);
+    baseApiUrl = 'https://icherniakov.ru/yt-course/auth/';
+    token: string | null = null;
+    refreshToken: string | null = null;
 
-  get isAuth() {
-    if (!this.token) {
-      this.token = this.cookieService.get('token');
-      this.refreshToken = this.cookieService.get('refreshToken');
+    get isAuth() {
+        if (!this.token) {
+            this.token = this.cookieService.get('token');
+            this.refreshToken = this.cookieService.get('refreshToken');
+        }
+        return !!this.token;
     }
-    return !!this.token
-  }
 
-  login(payload: { username: string, password: string }) {
-    const fd = new FormData();
-    fd.append('username', payload.username);
-    fd.append('password', payload.password);
+    login(payload: { username: string; password: string }) {
+        const fd = new FormData();
+        fd.append('username', payload.username);
+        fd.append('password', payload.password);
 
-    return this.http.post<TokenResponse>(
-      `${ this.baseApiUrl }token`,
-      fd)
-        .pipe(
-          tap( val => {this.saveTokens(val)} ),
-          catchError((error) => {
-            if (error.status === 401) {
-              alert('Неверный логин или пароль');
-              return EMPTY;
-            }
-            return throwError(error);
-          })
-        )
-  }
-
-  refreshAuthToken(){
-     return this.http.post<TokenResponse>(
-       `${ this.baseApiUrl }refresh`,
-        {refresh_token: this.refreshToken})
-          .pipe(
-            tap( val => { this.saveTokens(val)} ),
-            catchError(err => {
-              this.logout()
-              return throwError(err)
+        return this.http.post<TokenResponse>(`${this.baseApiUrl}token`, fd).pipe(
+            tap(val => {
+                this.saveTokens(val);
+            }),
+            catchError(error => {
+                if (error.status === 401) {
+                    alert('Неверный логин или пароль');
+                    return EMPTY;
+                }
+                return throwError(error);
             })
-          )
-  }
+        );
+    }
 
-  logout() {
-    this.cookieService.deleteAll();
-    this.token = null;
-    this.refreshToken = null;
-    this.router.navigate(['/login']);
-  }
+    refreshAuthToken() {
+        return this.http.post<TokenResponse>(`${this.baseApiUrl}refresh`, { refresh_token: this.refreshToken }).pipe(
+            tap(val => {
+                this.saveTokens(val);
+            }),
+            catchError(err => {
+                this.logout();
+                return throwError(err);
+            })
+        );
+    }
 
-  saveTokens(res: TokenResponse){
-    this.token = res.access_token;
-    this.refreshToken = res.refresh_token;
-    this.cookieService.set('token', this.token)
-    this.cookieService.set('refreshToken', this.refreshToken)
-  }
+    logout() {
+        this.cookieService.deleteAll();
+        this.token = null;
+        this.refreshToken = null;
+        this.router.navigate(['/login']);
+    }
+
+    saveTokens(res: TokenResponse) {
+        this.token = res.access_token;
+        this.refreshToken = res.refresh_token;
+        this.cookieService.set('token', this.token);
+        this.cookieService.set('refreshToken', this.refreshToken);
+    }
 }
