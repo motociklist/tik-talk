@@ -2,8 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 
 import { Chat } from "../interfaces/chat.interface";
-import { Chats } from '../interfaces/chats.interface';
-import {Message} from '../interfaces/message.interface';
+import { Chats } from "../interfaces/chats.interface";
+import { Message } from "../interfaces/message.interface";
 
 @Injectable({
     providedIn: "root",
@@ -26,7 +26,7 @@ export class ChatService {
 
     postMessageId(id: string, message: string) {
         return this.http.post<Message>(`${this.baseApiUrl}message/send/${id}`, null, {
-                params:{message}
+            params: { message },
         });
     }
 
@@ -36,7 +36,7 @@ export class ChatService {
 
     updateMessageId(id: string, text: string) {
         return this.http.patch<Message>(`${this.baseApiUrl}message/${id}`, null, {
-            params:{text}
+            params: { text },
         });
     }
 

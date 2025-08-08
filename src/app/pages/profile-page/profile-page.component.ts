@@ -2,12 +2,13 @@ import { Component, inject, OnInit } from "@angular/core";
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from "../../data/services/profile.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { switchMap } from "rxjs";
+import { firstValueFrom, switchMap } from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
 import { Profile } from "../../data/interfaces/profile.interfase";
+import { ChatService } from "../../data/services/chat.service";
 
 @Component({
     selector: "app-profile-page",
@@ -17,6 +18,7 @@ import { Profile } from "../../data/interfaces/profile.interfase";
 })
 export class ProfilePageComponent implements OnInit {
     profileService = inject(ProfileService);
+    chatService = inject(ChatService);
     route = inject(ActivatedRoute);
     me$ = this.profileService.getMe();
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
@@ -71,4 +73,9 @@ export class ProfilePageComponent implements OnInit {
             }
         })
     );
+
+    //FIXME GO TO CHAT
+    createChat() {
+        firstValueFrom(this.chatService.postChatId(this.currentProfile.id));
+    }
 }
