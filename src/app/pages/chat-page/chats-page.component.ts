@@ -23,8 +23,7 @@ export class ChatsPageComponent implements OnInit {
     onPush() {
         // firstValueFrom(this.chatService.getChatMe());
         // firstValueFrom(this.chatService.getChatId("210"));
-
-        firstValueFrom(this.chatService.postChatId("125"));
+        // firstValueFrom(this.chatService.postChatId("125"));
 
         firstValueFrom(this.chatService.postMessageId("210", "1"));
         firstValueFrom(this.chatService.getMessageId("5055"));
