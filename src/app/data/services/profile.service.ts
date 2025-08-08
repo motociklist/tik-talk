@@ -21,15 +21,15 @@ export class ProfileService {
         return this.http.get<Pageable<Profile>>(`${this.baseApiUrl}account/subscribers/`).pipe(map(res => res.items.slice(0, subsAmount)));
     }
 
-    getSubscriptions(id: number) {
+    getSubscriptions(id: string) {
         return this.http.get<Pageable<Profile>>(`${this.baseApiUrl}account/subscriptions/${id}`).pipe(map(res => res.items));
     }
 
-    postSubscriber(id: number) {
+    postSubscriber(id: string) {
         return this.http.post<Profile>(`${this.baseApiUrl}account/subscribe/${id}`, null);
     }
 
-    deleteSubscriber(id: number) {
+    deleteSubscriber(id: string) {
         return this.http.delete<Profile>(`${this.baseApiUrl}account/subscribe/${id}`);
     }
 

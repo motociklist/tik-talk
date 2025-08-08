@@ -21,8 +21,14 @@ export class ChatsPageComponent implements OnInit {
     }
 
     onPush() {
-        firstValueFrom(this.chatService.getChatMe());
-        firstValueFrom(this.chatService.getChatId("210"));
-        firstValueFrom(this.chatService.postChatId("124"));
+
+        // firstValueFrom(this.chatService.getChatMe());
+         firstValueFrom(this.chatService.getChatId("210"));
+        // firstValueFrom(this.chatService.postChatId("124"));
+
+        firstValueFrom(this.chatService.postMessageId('210', '1'));
+        firstValueFrom(this.chatService.getMessageId('5055'));
+        firstValueFrom(this.chatService.updateMessageId('5055', '2'));
+       // firstValueFrom(this.chatService.deleteMessageId('5059'));
     }
 }
