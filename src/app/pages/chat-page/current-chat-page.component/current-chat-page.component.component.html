@@ -1,10 +1,25 @@
-<div class="chat-container">
-    @if (chatData$ | async; as chat) {
-        <div class="bubble">
-            {{ chat.userFirst.id }}
-        </div>
-        <div class="bubble">
-            {{ chat.userSecond.id }}
+@if (chatData$ | async; as chat) {
+    <div class="chat-header">
+        <img class="avatar2" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
+        <span class="username">{{ chat.userFirst.username }}</span>
+        <input
+            [(ngModel)]="newMessage"
+            (keydown.enter)="sendMessage()"
+            placeholder="Введите сообщение..."
+            type="text"
+            class="message-field"
+        />
+        <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
+    </div>
+
+    @for (message of chat.messages; track message.id) {
+        <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
+            <img
+                class="avatar"
+                [src]="(isMyMessage(message) ? chat.userSecond.avatarUrl : chat.userFirst.avatarUrl) | imgUrl"
+                alt="avatar"
+            />
+            {{ message.text }}
         </div>
     }
-</div>
+}

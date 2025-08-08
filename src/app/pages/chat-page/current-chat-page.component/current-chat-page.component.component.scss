@@ -1,0 +1,105 @@
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
+
+.chat-header {
+    position: sticky;
+    top: 0;
+    background: var(--primary-color);
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 18px;
+    color: #222;
+}
+
+.message {
+    max-width: 70%;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    clear: both;
+}
+
+.my-message {
+    background-color: #007bff;
+    color: white;
+    float: left;
+    text-align: left;
+}
+
+.partner-message {
+    background-color: #d3d3d3;
+    color: black;
+    float: right;
+    text-align: left;
+}
+
+////////////////////////////////////////////////////
+.message-field {
+    width: 50%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    font-size: 14px;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.message-field:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 4px rgba(74, 144, 226, 0.5);
+}
+
+.send-btn {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height: 30px;
+    width: 30%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.send-btn:hover:not(:disabled) {
+    background: #357abd;
+}
+
+.send-btn:active:not(:disabled) {
+    transform: scale(0.9);
+}
+
+.send-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
