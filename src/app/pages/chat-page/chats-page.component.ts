@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { ProfileService } from "../../data/services/profile.service";
 import { AsyncPipe } from "@angular/common";
 import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.component";
 import { firstValueFrom } from "rxjs";
+import { ChatService } from '../../data/services/chat.service';
 
 @Component({
     selector: "app-chats-page",
@@ -11,8 +11,8 @@ import { firstValueFrom } from "rxjs";
     styleUrl: "./chats-page.component.scss",
 })
 export class ChatsPageComponent implements OnInit {
-    profileService = inject(ProfileService);
-    chats$ = this.profileService.getChatMe();
+    chatService = inject(ChatService);
+    chats$ = this.chatService.getChatMe();
 
     ngOnInit() {
         this.chats$.subscribe(l => {
@@ -21,8 +21,8 @@ export class ChatsPageComponent implements OnInit {
     }
 
     onPush() {
-        firstValueFrom(this.profileService.getChatMe());
-        firstValueFrom(this.profileService.getChatId("210"));
-        firstValueFrom(this.profileService.postChatId("124"));
+        firstValueFrom(this.chatService.getChatMe());
+        firstValueFrom(this.chatService.getChatId("210"));
+        firstValueFrom(this.chatService.postChatId("124"));
     }
 }

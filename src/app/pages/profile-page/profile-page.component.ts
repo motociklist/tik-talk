@@ -21,8 +21,7 @@ export class ProfilePageComponent implements OnInit {
     me$ = this.profileService.getMe();
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
     editMode = true;
-    // @ts-ignore
-    currentProfile: Profile = {};
+    currentProfile!: Profile;
 
     ngOnInit() {
         this.profile$.subscribe(profile => {
@@ -50,6 +49,8 @@ export class ProfilePageComponent implements OnInit {
             };
         });
     }
+
+
 
     profile$ = this.route.params.pipe(
         switchMap(({ id }) => {

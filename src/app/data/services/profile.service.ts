@@ -3,7 +3,6 @@ import { inject, Injectable, signal } from "@angular/core";
 import { Profile } from "../interfaces/profile.interfase";
 import { Pageable } from "../interfaces/pageable.interface";
 import { map, tap } from "rxjs";
-import { Chat } from "../interfaces/chat.interface";
 
 @Injectable({
     providedIn: "root",
@@ -44,18 +43,6 @@ export class ProfileService {
 
     getAccount(id: string) {
         return this.http.get<Profile>(`${this.baseApiUrl}account/${id}`);
-    }
-
-    getChatMe() {
-        return this.http.get<Chat[]>(`${this.baseApiUrl}chat/get_my_chats/`);
-    }
-
-    getChatId(id: string) {
-        return this.http.get<Chat>(`${this.baseApiUrl}chat/${id}`);
-    }
-
-    postChatId(id: string) {
-        return this.http.post<Chat>(`${this.baseApiUrl}chat/${id}`, null);
     }
 
     patchProfile(profile: Partial<Profile>) {

@@ -10,10 +10,10 @@
         } @else {
             <a
                 class="btn to-subscribe-btn"
-                [ngClass]="{ 'btn-unsubscribe': currentProfile?.isSubscribed }"
-                (click)="currentProfile?.isSubscribed ? Unsubscribe() : Subscribe()"
+                [ngClass]="{ 'btn-unsubscribe': currentProfile.isSubscribed }"
+                (click)="currentProfile.isSubscribed ? Unsubscribe() : Subscribe()"
             >
-                {{ currentProfile?.isSubscribed ? "Отписаться" : "Подписаться" }}
+                {{ currentProfile.isSubscribed ? "Отписаться" : "Подписаться" }}
             </a>
         }
     </header>

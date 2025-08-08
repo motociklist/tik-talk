@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { switchMap } from "rxjs";
-import { ProfileService } from "../../../data/services/profile.service";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe } from "@angular/common";
+import { ChatService } from '../../../data/services/chat.service';
 
 @Component({
     selector: "app-current-chat-page.component",
@@ -11,12 +11,12 @@ import { AsyncPipe } from "@angular/common";
     styleUrl: "./current-chat-page.component.component.scss",
 })
 export class CurrentChatPageComponentComponent implements OnInit {
-    profileService = inject(ProfileService);
+    chatService = inject(ChatService);
     route = inject(ActivatedRoute);
 
     chatData$ = this.route.params.pipe(
         switchMap(({ id }) => {
-            return this.profileService.getChatId(id);
+            return this.chatService.getChatId(id);
         })
     );
 
