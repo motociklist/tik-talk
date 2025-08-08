@@ -1,23 +1,23 @@
-import { Component, inject, OnDestroy } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { debounceTime, startWith, Subscribable, Subscription, switchMap } from 'rxjs';
-import { ProfileService } from '../../../data/services/profile.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Component, inject, OnDestroy } from "@angular/core";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { debounceTime, startWith, Subscribable, Subscription, switchMap } from "rxjs";
+import { ProfileService } from "../../../data/services/profile.service";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
-    selector: 'app-profile-filters',
+    selector: "app-profile-filters",
     imports: [ReactiveFormsModule],
-    templateUrl: './profile-filters.component.html',
-    styleUrl: './profile-filters.component.scss',
+    templateUrl: "./profile-filters.component.html",
+    styleUrl: "./profile-filters.component.scss",
 })
 export class ProfileFiltersComponent implements OnDestroy {
     fb = inject(FormBuilder);
     profileServis = inject(ProfileService);
 
     searchForm = this.fb.group({
-        firstName: [''],
-        lastName: [''],
-        stack: [''],
+        firstName: [""],
+        lastName: [""],
+        stack: [""],
     });
 
     searchFormSub!: Subscription;

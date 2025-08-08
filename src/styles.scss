@@ -1,4 +1,4 @@
-@use 'margins';
+@use "margins";
 
 :root {
     --dark-color: #000000;
@@ -21,7 +21,7 @@ body {
     height: 100dvh;
     background-color: var(--dark-color);
     color: var(--light-color);
-    background-image: url('../../tik-talk/public/assets/imgs/Img-Bg.png');
+    background-image: url("../../tik-talk/public/assets/imgs/Img-Bg.png");
     background-size: cover;
     background-repeat: no-repeat;
 }

@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
-import { Profile } from '../interfaces/profile.interfase';
-import { Pageable } from '../interfaces/pageable.interface';
-import { map, tap } from 'rxjs';
-import { Chat } from '../interfaces/chat.interface';
+import { HttpClient } from "@angular/common/http";
+import { inject, Injectable, signal } from "@angular/core";
+import { Profile } from "../interfaces/profile.interfase";
+import { Pageable } from "../interfaces/pageable.interface";
+import { map, tap } from "rxjs";
+import { Chat } from "../interfaces/chat.interface";
 
 @Injectable({
-    providedIn: 'root',
+    providedIn: "root",
 })
 export class ProfileService {
     http = inject(HttpClient);
-    baseApiUrl = 'https://icherniakov.ru/yt-course/';
+    baseApiUrl = "https://icherniakov.ru/yt-course/";
     me = signal<Profile | null>(null);
     filteretProfils = signal<Profile[]>([]);
 
@@ -19,15 +19,11 @@ export class ProfileService {
     }
 
     getSubscribersShortList(subsAmount = 3) {
-        return this.http
-            .get<Pageable<Profile>>(`${this.baseApiUrl}account/subscribers/`)
-            .pipe(map(res => res.items.slice(0, subsAmount)));
+        return this.http.get<Pageable<Profile>>(`${this.baseApiUrl}account/subscribers/`).pipe(map(res => res.items.slice(0, subsAmount)));
     }
 
     getSubscriptions(id: number) {
-        return this.http
-            .get<Pageable<Profile>>(`${this.baseApiUrl}account/subscriptions/${id}`)
-            .pipe(map(res => res.items));
+        return this.http.get<Pageable<Profile>>(`${this.baseApiUrl}account/subscriptions/${id}`).pipe(map(res => res.items));
     }
 
     postSubscriber(id: number) {
@@ -55,11 +51,11 @@ export class ProfileService {
     }
 
     getChatId(id: string) {
-        return this.http.get<Profile>(`${this.baseApiUrl}chat/${id}`);
+        return this.http.get<Chat>(`${this.baseApiUrl}chat/${id}`);
     }
 
     postChatId(id: string) {
-        return this.http.post<Profile>(`${this.baseApiUrl}chat/${id}`, null);
+        return this.http.post<Chat>(`${this.baseApiUrl}chat/${id}`, null);
     }
 
     patchProfile(profile: Partial<Profile>) {
@@ -68,7 +64,7 @@ export class ProfileService {
 
     uploadAvatar(file: File) {
         const fd = new FormData();
-        fd.append('image', file);
+        fd.append("image", file);
 
         return this.http.post<Profile>(`${this.baseApiUrl}account/upload_image`, fd);
     }
