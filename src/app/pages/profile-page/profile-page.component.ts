@@ -50,8 +50,6 @@ export class ProfilePageComponent implements OnInit {
         });
     }
 
-
-
     profile$ = this.route.params.pipe(
         switchMap(({ id }) => {
             if (id === "me") {
