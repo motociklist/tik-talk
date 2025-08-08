@@ -1,12 +1,12 @@
-import { Component, input } from '@angular/core';
-import { Profile } from '../../data/interfaces/profile.interfase';
-import { ImgUrlPipe } from '../../helpers/pipes/img-url.pipe';
+import { Component, input } from "@angular/core";
+import { Profile } from "../../data/interfaces/profile.interfase";
+import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 
 @Component({
-    selector: 'app-profile-header',
+    selector: "app-profile-header",
     imports: [ImgUrlPipe],
-    templateUrl: './profile-header.component.html',
-    styleUrl: './profile-header.component.scss',
+    templateUrl: "./profile-header.component.html",
+    styleUrl: "./profile-header.component.scss",
 })
 export class ProfileHeaderComponent {
     profile = input<Profile>();

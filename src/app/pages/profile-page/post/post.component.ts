@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-    selector: 'app-post',
+    selector: "app-post",
     imports: [],
-    templateUrl: './post.component.html',
-    styleUrl: './post.component.scss',
+    templateUrl: "./post.component.html",
+    styleUrl: "./post.component.scss",
 })
 export class PostComponent {}

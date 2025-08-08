@@ -1,9 +1,13 @@
-import { Profile } from './profile.interfase';
+import { Profile } from "./profile.interfase";
 
 export interface Chat {
-    created?: Date;
     id: string;
     message?: string;
+    created?: Date;
     undeadMessage?: string;
-    userFrom: Profile;
+    userFrom?: Profile;
+
+    messages?: [];
+    userFirst?: Profile;
+    userSecond?: Profile;
 }

@@ -22,7 +22,7 @@
 
         @if (chatMode) {
             <div>
-                <button class="btn mt20 btn-margin">Открыть чат</button>
+                <button [routerLink]="['/chat', chatId]" class="btn mt20 btn-margin">Открыть чат</button>
             </div>
         } @else {
             <div>

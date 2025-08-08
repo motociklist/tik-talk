@@ -1,0 +1,10 @@
+<div class="chat-container">
+    @if (chatData$ | async; as chat) {
+        <div class="bubble">
+            {{ chat.userFirst?.id }}
+        </div>
+        <div class="bubble">
+            {{ chat.userSecond?.id }}
+        </div>
+    }
+</div>

@@ -1,14 +1,14 @@
-import {Component, effect, inject, ViewChild} from '@angular/core';
-import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ProfileService} from '../../data/services/profile.service';
-import {firstValueFrom} from 'rxjs';
-import {AvatarUploadComponent} from './avatar-upload/avatar-upload.component';
-import {Router} from '@angular/router';
+import { Component, effect, inject, ViewChild } from "@angular/core";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
+import { ProfileService } from "../../data/services/profile.service";
+import { firstValueFrom } from "rxjs";
+import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
+import { Router } from "@angular/router";
 
 @Component({
-    selector: 'app-settings-page',
-    templateUrl: './settings-page.component.html',
-    styleUrl: './settings-page.component.scss',
+    selector: "app-settings-page",
+    templateUrl: "./settings-page.component.html",
+    styleUrl: "./settings-page.component.scss",
     imports: [ReactiveFormsModule, AvatarUploadComponent],
 })
 export class SettingsPageComponent {
@@ -18,11 +18,11 @@ export class SettingsPageComponent {
     @ViewChild(AvatarUploadComponent) avatarUplouder!: AvatarUploadComponent;
 
     form = this.fb.group({
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        username: [{value: '', disabled: true}, Validators.required],
-        description: [''],
-        stack: [''],
+        firstName: ["", Validators.required],
+        lastName: ["", Validators.required],
+        username: [{ value: "", disabled: true }, Validators.required],
+        description: [""],
+        stack: [""],
     });
 
     constructor() {
@@ -36,7 +36,6 @@ export class SettingsPageComponent {
         });
     }
 
-
     onSave() {
         this.form.markAllAsTouched();
         this.form.updateValueAndValidity();
@@ -46,7 +45,6 @@ export class SettingsPageComponent {
         if (this.avatarUplouder.avatar) {
             firstValueFrom(this.profileService.uploadAvatar(this.avatarUplouder.avatar));
         }
-
 
         //FIXME
         //@ts-ignore
@@ -60,18 +58,18 @@ export class SettingsPageComponent {
             })
         );
 
-        this.router.navigate(['']);
+        this.router.navigate([""]);
     }
 
     splitStack(stack: any) {
         if (!stack) return [];
         if (Array.isArray(stack)) return stack;
-        return stack.split(',');
+        return stack.split(",");
     }
 
     mergeStack(stack: any) {
-        if (!stack) return '';
-        if (Array.isArray(stack)) return stack.join(',');
+        if (!stack) return "";
+        if (Array.isArray(stack)) return stack.join(",");
         return stack;
     }
 }

@@ -1,7 +1,7 @@
-import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { AuthService } from './auth.service';
-import { BehaviorSubject, catchError, filter, switchMap, tap, throwError } from 'rxjs';
+import { HttpHandlerFn, HttpInterceptorFn, HttpRequest } from "@angular/common/http";
+import { inject } from "@angular/core";
+import { AuthService } from "./auth.service";
+import { BehaviorSubject, catchError, filter, switchMap, tap, throwError } from "rxjs";
 
 let isRefreshing$ = new BehaviorSubject<boolean>(false);
 
@@ -25,7 +25,7 @@ export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
             );
         }
 
-        if (req.url.includes('refresh')) return next(addToken(req, authService.token!));
+        if (req.url.includes("refresh")) return next(addToken(req, authService.token!));
 
         return isRefreshing$.pipe(
             filter(isRefreshing => !isRefreshing),
