@@ -1,14 +1,15 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from "../../data/services/profile.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { firstValueFrom, switchMap } from "rxjs";
+import { Subscription, switchMap } from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
 import { PostFeedComponent } from "./post-feed/post-feed.component";
 import { Profile } from "../../data/interfaces/profile.interfase";
 import { ChatService } from "../../data/services/chat.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: "app-profile-page",
@@ -16,7 +17,8 @@ import { ChatService } from "../../data/services/chat.service";
     templateUrl: "./profile-page.component.html",
     styleUrl: "./profile-page.component.scss",
 })
-export class ProfilePageComponent implements OnInit {
+export class ProfilePageComponent implements OnInit, OnDestroy {
+    private subscriptions = new Subscription();
     profileService = inject(ProfileService);
     chatService = inject(ChatService);
     route = inject(ActivatedRoute);
@@ -24,6 +26,8 @@ export class ProfilePageComponent implements OnInit {
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
     editMode = true;
     currentProfile!: Profile;
+
+    constructor(private router: Router) {}
 
     ngOnInit() {
         this.profile$.subscribe(profile => {
@@ -74,8 +78,13 @@ export class ProfilePageComponent implements OnInit {
         })
     );
 
-    //FIXME GO TO CHAT
-    createChat() {
-        firstValueFrom(this.chatService.postChatId(this.currentProfile.id));
+    openChat() {
+        this.chatService.postChatId(this.currentProfile.id).subscribe(chat => {
+            this.router.navigate(["/chat", chat.id]);
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.unsubscribe();
     }
 }
