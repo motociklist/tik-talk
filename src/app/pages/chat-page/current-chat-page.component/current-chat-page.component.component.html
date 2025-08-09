@@ -12,6 +12,8 @@
         <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
     </div>
 
+<!--    <button (click)="gg()">htrbdhjytn</button>-->
+
     @for (message of chat.messages; track message.id) {
         <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
             <img

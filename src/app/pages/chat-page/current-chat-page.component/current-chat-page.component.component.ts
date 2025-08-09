@@ -35,8 +35,12 @@ export class CurrentChatPageComponentComponent implements OnInit {
         // });
     }
 
+    gg() {
+        firstValueFrom(this.chatService.updateMessageId("5190", "26768877"));
+    }
+
     //FIXME 2 request
-    sendMessage() {
+    async sendMessage() {
         const trimmed = this.newMessage.trim();
         firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
     }

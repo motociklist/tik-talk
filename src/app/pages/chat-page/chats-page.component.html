@@ -4,6 +4,6 @@
 
 <div class="chat-list">
     @for (chat of chats$ | async; track chat.id) {
-        <app-profile-card [profile]="chat.userFrom" [chatMode]="true" [chatId]="chat.id"></app-profile-card>
+        <app-chat-card [chat]="chat" [chatMode]="true"></app-chat-card>
     }
 </div>
