@@ -3,7 +3,7 @@ import { Profile } from "./profile.interfase";
 export interface Chats {
     id: string;
     message: string;
-    created: Date;
+    createdAt: string;
     undeadMessage: string;
     userFrom: Profile;
 }

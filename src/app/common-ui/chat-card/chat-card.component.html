@@ -1,0 +1,24 @@
+<div class="chat-card">
+    <div class="avatar-name">
+        <img [src]="chat.userFrom.avatarUrl | imgUrl" [alt]="chat.userFrom.lastName" class="chat-card__avatar" />
+
+        <div class="chat-card__name">
+            <strong class="h6">{{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}</strong>
+            <span class="subtitle">{{ chat.userFrom.username }}</span>
+        </div>
+    </div>
+
+    <div class="chat-card__data">
+        {{ chat.createdAt | date:'mediumDate' }}
+    </div>
+
+    <div class="chat-card__data chat-card__last-message">
+        {{chat.message}}
+    </div>
+
+    <div>
+        <button [routerLink]="['/chat', chat.id]" class="btn mt20 btn-margin">Открыть чат</button>
+    </div>
+
+</div>
+

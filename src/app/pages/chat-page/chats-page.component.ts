@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { AsyncPipe } from "@angular/common";
-import { ProfileCardComponent } from "../../common-ui/profile-card/profile-card.component";
 import { firstValueFrom } from "rxjs";
 import { ChatService } from "../../data/services/chat.service";
+import { ChatCardComponent } from "../../common-ui/chat-card/chat-card.component";
 
 @Component({
     selector: "app-chats-page",
     templateUrl: "./chats-page.component.html",
-    imports: [ProfileCardComponent, AsyncPipe],
+    imports: [AsyncPipe, ChatCardComponent],
     styleUrl: "./chats-page.component.scss",
 })
 export class ChatsPageComponent implements OnInit {
@@ -22,7 +22,7 @@ export class ChatsPageComponent implements OnInit {
 
     onPush() {
         // firstValueFrom(this.chatService.getChatMe());
-        // firstValueFrom(this.chatService.getChatId("210"));
+        //firstValueFrom(this.chatService.getChatId("210"));
         // firstValueFrom(this.chatService.postChatId("125"));
 
         firstValueFrom(this.chatService.postMessageId("210", "1"));
