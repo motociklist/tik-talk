@@ -1,32 +1,25 @@
-@if (profile) {
-    <div class="profile-card">
-        <div class="avatar-name">
-            <img [src]="profile.avatarUrl | imgUrl" [alt]="profile.lastName" class="profile-card__avatar" />
+<div class="profile-card">
+    <div class="avatar-name">
+        <img [src]="profile.avatarUrl | imgUrl" [alt]="profile.lastName" class="profile-card__avatar" />
 
-            <div class="profile-card__name">
-                <strong class="h6">{{ profile.firstName }} {{ profile.lastName }}</strong>
-                <span class="subtitle">{{ profile.username }}</span>
-            </div>
+        <div class="profile-card__name">
+            <strong class="h6">{{ profile.firstName }} {{ profile.lastName }}</strong>
+            <span class="subtitle">{{ profile.username }}</span>
         </div>
+    </div>
 
-        <div class="profile-card__desctiption">
-            {{ profile.description }}
-        </div>
+    <div class="profile-card__desctiption">
+        {{ profile.description }}
+    </div>
 
-        <div class="profile-card__tags">
-            @for (skill of profile.stack; track skill) {
-                <div class="skill-tag">{{ skill }}</div>
-            }
-        </div>
-
-        @if (chatMode) {
-            <div>
-                <button [routerLink]="['/chat', chatId]" class="btn mt20 btn-margin">Открыть чат</button>
-            </div>
-        } @else {
-            <div>
-                <button [routerLink]="['/profile', profile.id]" class="btn mt20 btn-margin">Просмотр</button>
-            </div>
+    <div class="profile-card__tags">
+        @for (skill of profile.stack; track skill) {
+            <div class="skill-tag">{{ skill }}</div>
         }
     </div>
-}
+
+    <div>
+        <button [routerLink]="['/profile', profile.id]"  class="btn mt20 btn-margin btn-view">Просмотр профиля</button>
+    </div>
+
+</div>

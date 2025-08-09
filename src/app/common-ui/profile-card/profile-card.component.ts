@@ -15,7 +15,6 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 
     @Input() profile!: Profile;
     @Input() chatMode: boolean = false;
-    @Input() chatId?: string;
 
     ngOnInit() {}
 
