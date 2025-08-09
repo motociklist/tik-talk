@@ -14,6 +14,8 @@
 
 <!--    <button (click)="gg()">htrbdhjytn</button>-->
 
+<!--    <button (click)="gg2()">delet</button>-->
+
     @for (message of chat.messages; track message.id) {
         <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
             <img
