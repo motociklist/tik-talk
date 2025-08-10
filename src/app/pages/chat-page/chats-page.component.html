@@ -1,7 +1,5 @@
 <div class="chat-title">Список чатов</div>
 
-<!--<button (click)="onPush()">raeragq</button>-->
-
 <div class="chat-list">
     @for (chat of chats$ | async; track chat.id) {
         <app-chat-card [chat]="chat" [chatMode]="true"></app-chat-card>
