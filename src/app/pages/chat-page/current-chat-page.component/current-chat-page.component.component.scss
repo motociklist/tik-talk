@@ -34,6 +34,8 @@
 }
 
 .message {
+    display: flex;
+    gap: 16px;
     max-width: 70%;
     margin: 8px 0;
     padding: 10px 15px;
@@ -56,7 +58,6 @@
     text-align: left;
 }
 
-////////////////////////////////////////////////////
 .message-field {
     width: 50%;
     padding: 10px 14px;
@@ -103,3 +104,29 @@
     background: #ccc;
     cursor: not-allowed;
 }
+
+.action-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background: #e3e8e4;
+    border: none;
+    border-radius: 50%;
+}
+
+.action-delete {
+    background: #d9534f;
+}
+
+.action-red {
+    background: #dae1dc;
+}
+
+.action-messages {
+    display: flex;
+    gap: 4px;
+}
+
+

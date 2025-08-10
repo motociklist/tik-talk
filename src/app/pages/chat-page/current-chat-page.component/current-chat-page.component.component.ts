@@ -52,4 +52,8 @@ export class CurrentChatPageComponentComponent implements OnInit {
     isMyMessage(message: Message): boolean {
         return message.userFromId === this.me()?.id;
     }
+
+    onDelete(id: string) {
+        firstValueFrom(this.chatService.deleteMessageId(id));
+    }
 }

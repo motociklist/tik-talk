@@ -17,13 +17,26 @@
 <!--    <button (click)="gg2()">delet</button>-->
 
     @for (message of chat.messages; track message.id) {
-        <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
-            <img
-                class="avatar"
-                [src]="(isMyMessage(message) ? chat.userSecond.avatarUrl : chat.userFirst.avatarUrl) | imgUrl"
-                alt="avatar"
-            />
-            {{ message.text }}
+        <div (click)="gg2()" [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
+            <div>
+                <img
+                    class="avatar"
+                    [src]="(isMyMessage(message) ? chat.userSecond.avatarUrl : chat.userFirst.avatarUrl) | imgUrl"
+                    alt="avatar"
+                />
+                {{ message.text }}
+            </div>
+
+            @if (isMyMessage(message)) {
+                <div class="action-messages">
+                    <button class="action-message action-red">
+                        <img src="/assets/imgs/red.png" width="15" height="15"/>
+                    </button>
+                    <button (click)="onDelete(message.id)" class="action-message action-delete">
+                        <img src="/assets/imgs/delete.png" width="15" height="15"/>
+                    </button>
+                </div>
+            }
         </div>
     }
 }
