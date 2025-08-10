@@ -35,15 +35,6 @@ export class CurrentChatPageComponentComponent implements OnInit {
         // });
     }
 
-    gg() {
-        firstValueFrom(this.chatService.updateMessageId("5183", "26768877"));
-    }
-
-    gg2() {
-        // firstValueFrom(this.chatService.deleteMessageId("5183"));
-        firstValueFrom(this.chatService.postMessageId("215", "trimmed"));
-    }
-
     async sendMessage() {
         const trimmed = this.newMessage.trim();
         firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
@@ -55,5 +46,9 @@ export class CurrentChatPageComponentComponent implements OnInit {
 
     onDelete(id: string) {
         firstValueFrom(this.chatService.deleteMessageId(id));
+    }
+
+    openModalRed() {
+        firstValueFrom(this.chatService.updateMessageId("5183", "26768877"));
     }
 }

@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
 import { AsyncPipe } from "@angular/common";
-import { firstValueFrom } from "rxjs";
 import { ChatService } from "../../data/services/chat.service";
 import { ChatCardComponent } from "../../common-ui/chat-card/chat-card.component";
 
@@ -15,19 +14,8 @@ export class ChatsPageComponent implements OnInit {
     chats$ = this.chatService.getChatMe();
 
     ngOnInit() {
-        this.chats$.subscribe(l => {
-            console.log(l);
-        });
-    }
-
-    onPush() {
-        // firstValueFrom(this.chatService.getChatMe());
-        //firstValueFrom(this.chatService.getChatId("210"));
-        // firstValueFrom(this.chatService.postChatId("125"));
-
-        firstValueFrom(this.chatService.postMessageId("210", "1"));
-        firstValueFrom(this.chatService.getMessageId("5055"));
-        firstValueFrom(this.chatService.updateMessageId("5055", "2"));
-        // firstValueFrom(this.chatService.deleteMessageId('5059'));
+        // this.chats$.subscribe(l => {
+        //     console.log(l);
+        // });
     }
 }

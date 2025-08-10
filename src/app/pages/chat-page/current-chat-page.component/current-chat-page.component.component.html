@@ -12,12 +12,8 @@
         <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
     </div>
 
-<!--    <button (click)="gg()">htrbdhjytn</button>-->
-
-<!--    <button (click)="gg2()">delet</button>-->
-
     @for (message of chat.messages; track message.id) {
-        <div (click)="gg2()" [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
+        <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
             <div>
                 <img
                     class="avatar"
@@ -29,14 +25,26 @@
 
             @if (isMyMessage(message)) {
                 <div class="action-messages">
-                    <button class="action-message action-red">
-                        <img src="/assets/imgs/red.png" width="15" height="15"/>
+                    <button (click)="openModalRed()" class="action-message action-red">
+                        <img src="/assets/imgs/red.png" class="action-img" alt="Редактировать"/>
                     </button>
+
                     <button (click)="onDelete(message.id)" class="action-message action-delete">
-                        <img src="/assets/imgs/delete.png" width="15" height="15"/>
+                        <img src="/assets/imgs/delete.png" class="action-img" alt="Удалить"/>
                     </button>
                 </div>
             }
+
+<!--            <div id="modal" class="modal">-->
+<!--                <div class="modal-content">-->
+<!--                    <h2>Редактирование текста</h2>-->
+<!--                    <textarea id="text-edit-area"></textarea>-->
+<!--                    <button id="save-btn">Сохранить</button>-->
+<!--                    <button id="cancel-btn">Отмена</button>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
         </div>
     }
 }
