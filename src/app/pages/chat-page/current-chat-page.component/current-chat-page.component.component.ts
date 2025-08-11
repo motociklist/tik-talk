@@ -21,6 +21,9 @@ export class CurrentChatPageComponentComponent implements OnInit {
     newMessage = "";
     me = this.profileService.me;
     idChat = "";
+    isModalOpen: boolean = false;
+    editText: string = '';
+    idMessage: string = '';
 
     chatData$ = this.route.params.pipe(
         switchMap(({ id }) => {
@@ -48,7 +51,19 @@ export class CurrentChatPageComponentComponent implements OnInit {
         firstValueFrom(this.chatService.deleteMessageId(id));
     }
 
-    openModalRed() {
-        firstValueFrom(this.chatService.updateMessageId("5183", "26768877"));
+    openModalRed(message: Message) {
+        this.editText = message.text;
+        this.isModalOpen = true;
+        this.idMessage = message.id;
+    }
+
+    closeModal() {
+        this.isModalOpen = false;
+    }
+
+    saveMessage() {
+        console.log(this.editText)
+        firstValueFrom(this.chatService.updateMessageId(this.idMessage, this.editText));
+        this.closeModal();
     }
 }

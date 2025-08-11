@@ -12,6 +12,21 @@
         <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
     </div>
 
+    @if(isModalOpen){
+        <div class="modal">
+            <div class="modal-content">
+                <h3 class="my-message">Редактировать сообщение</h3>
+
+                <textarea [(ngModel)]="editText" rows="4"></textarea>
+                <br>
+                <div class="action-button2">
+                    <button (click)="saveMessage()">Сохранить</button>
+                    <button (click)="closeModal()">Отмена</button>
+                </div>
+            </div>
+        </div>
+    }
+
     @for (message of chat.messages; track message.id) {
         <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
             <div>
@@ -25,7 +40,7 @@
 
             @if (isMyMessage(message)) {
                 <div class="action-messages">
-                    <button (click)="openModalRed()" class="action-message action-red">
+                    <button (click)="openModalRed(message)" class="action-message action-red">
                         <img src="/assets/imgs/red.png" class="action-img" alt="Редактировать"/>
                     </button>
 
@@ -34,16 +49,6 @@
                     </button>
                 </div>
             }
-
-<!--            <div id="modal" class="modal">-->
-<!--                <div class="modal-content">-->
-<!--                    <h2>Редактирование текста</h2>-->
-<!--                    <textarea id="text-edit-area"></textarea>-->
-<!--                    <button id="save-btn">Сохранить</button>-->
-<!--                    <button id="cancel-btn">Отмена</button>-->
-<!--                </div>-->
-<!--            </div>-->
-
 
         </div>
     }
