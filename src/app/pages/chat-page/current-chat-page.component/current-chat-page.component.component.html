@@ -40,8 +40,8 @@
 
             @if (isMyMessage(message)) {
                 <div class="action-messages">
-                    <button (click)="openModalRed(message)" class="action-message action-red">
-                        <img src="/assets/imgs/red.png" class="action-img" alt="Редактировать"/>
+                    <button (click)="openModalEdit(message)" class="action-message action-edit">
+                        <img src="/assets/imgs/edit.png" class="action-img" alt="Редактировать"/>
                     </button>
 
                     <button (click)="onDelete(message.id)" class="action-message action-delete">
