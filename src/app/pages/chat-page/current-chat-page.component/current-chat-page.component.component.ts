@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { firstValueFrom, switchMap } from "rxjs";
+import { combineLatest, firstValueFrom, startWith, Subject, switchMap } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { ChatService } from "../../../data/services/chat.service";
@@ -15,6 +15,7 @@ import { FormsModule } from "@angular/forms";
     styleUrl: "./current-chat-page.component.component.scss",
 })
 export class CurrentChatPageComponentComponent implements OnInit {
+    private refresh$ = new Subject<void>();
     profileService = inject(ProfileService);
     chatService = inject(ChatService);
     route = inject(ActivatedRoute);
@@ -25,30 +26,37 @@ export class CurrentChatPageComponentComponent implements OnInit {
     editText: string = '';
     idMessage: string = '';
 
-    chatData$ = this.route.params.pipe(
-        switchMap(({ id }) => {
+    chatData$ = combineLatest([
+        this.route.params,
+        this.refresh$.pipe(startWith(null))
+    ]).pipe(
+        switchMap(([{ id }]) => {
             this.idChat = id;
             return this.chatService.getChatId(id);
         })
     );
 
-    ngOnInit() {
-        // this.chatData$.subscribe(chatData => {
-        //     console.log(chatData);
-        // });
-    }
-
-    async sendMessage() {
-        const trimmed = this.newMessage.trim();
-        firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
-    }
+    ngOnInit() {}
 
     isMyMessage(message: Message): boolean {
         return message.userFromId === this.me()?.id;
     }
 
-    onDelete(id: string) {
-        firstValueFrom(this.chatService.deleteMessageId(id));
+    async sendMessage() {
+        const trimmed = this.newMessage.trim();
+        await firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
+        this.refresh$.next(); // Обновляем данные
+    }
+
+    async onDelete(id: string) {
+        await firstValueFrom(this.chatService.deleteMessageId(id));
+        this.refresh$.next(); // Обновляем данные
+    }
+
+    async saveMessage() {
+        await firstValueFrom(this.chatService.updateMessageId(this.idMessage, this.editText));
+        this.closeModal();
+        this.refresh$.next(); // Обновляем данные
     }
 
     openModalRed(message: Message) {
@@ -59,11 +67,5 @@ export class CurrentChatPageComponentComponent implements OnInit {
 
     closeModal() {
         this.isModalOpen = false;
-    }
-
-    saveMessage() {
-        console.log(this.editText)
-        firstValueFrom(this.chatService.updateMessageId(this.idMessage, this.editText));
-        this.closeModal();
     }
 }

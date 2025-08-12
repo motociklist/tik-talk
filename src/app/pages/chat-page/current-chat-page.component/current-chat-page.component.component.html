@@ -15,13 +15,13 @@
     @if(isModalOpen){
         <div class="modal">
             <div class="modal-content">
-                <h3 class="my-message">Редактировать сообщение</h3>
+                <h3 class="message-edit">Редактировать сообщение</h3>
 
                 <textarea [(ngModel)]="editText" rows="4"></textarea>
-                <br>
-                <div class="action-button2">
-                    <button (click)="saveMessage()">Сохранить</button>
-                    <button (click)="closeModal()">Отмена</button>
+
+                <div class="action-button-modal">
+                    <button class="save-button" (click)="saveMessage()">Сохранить</button>
+                    <button class="cancel-button" (click)="closeModal()">Отмена</button>
                 </div>
             </div>
         </div>
