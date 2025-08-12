@@ -59,7 +59,7 @@ export class CurrentChatPageComponentComponent implements OnInit {
         this.refresh$.next(); // Обновляем данные
     }
 
-    openModalRed(message: Message) {
+    openModalEdit(message: Message) {
         this.editText = message.text;
         this.isModalOpen = true;
         this.idMessage = message.id;
