@@ -1,6 +1,6 @@
 @if (chatData$ | async; as chat) {
     <div class="chat-header">
-        <img class="avatar2" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
+        <img class="avatar-current-chat" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
         <span class="username">{{ chat.userFirst.username }}</span>
     </div>
 
@@ -21,7 +21,7 @@
 
     <div #chatContainer class="chat-container">
         @for (message of chat.messages; track message.id) {
-            <div #msg [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
+            <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
                 <div>
                     <img
                         class="avatar"
