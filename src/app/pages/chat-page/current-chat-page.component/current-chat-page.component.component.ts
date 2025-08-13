@@ -1,5 +1,12 @@
-import { Component, inject, OnInit } from "@angular/core";
-import { combineLatest, firstValueFrom, startWith, Subject, switchMap } from "rxjs";
+import {
+    Component,
+    ElementRef,
+    inject,
+    OnDestroy,
+    OnInit,
+    ViewChild
+} from "@angular/core";
+import {combineLatest, firstValueFrom, startWith, Subject, switchMap, take} from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { ChatService } from "../../../data/services/chat.service";
@@ -14,7 +21,8 @@ import { FormsModule } from "@angular/forms";
     templateUrl: "./current-chat-page.component.component.html",
     styleUrl: "./current-chat-page.component.component.scss",
 })
-export class CurrentChatPageComponentComponent implements OnInit {
+export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
+    private destroy$ = new Subject<void>();
     private refresh$ = new Subject<void>();
     profileService = inject(ProfileService);
     chatService = inject(ChatService);
@@ -25,6 +33,7 @@ export class CurrentChatPageComponentComponent implements OnInit {
     isModalOpen: boolean = false;
     editText: string = '';
     idMessage: string = '';
+    @ViewChild('chatContainer') private chatContainer!: ElementRef;
 
     chatData$ = combineLatest([
         this.route.params,
@@ -36,27 +45,46 @@ export class CurrentChatPageComponentComponent implements OnInit {
         })
     );
 
-    ngOnInit() {}
+    ngOnInit() {
+        //FIXME
+        this.chatData$
+            .pipe(take(1))
+            .subscribe(() => {
+            setTimeout(() => this.scrollToBottom(), 200);
+        });
+    }
+
+    ngOnDestroy() {
+        this.destroy$.next();
+        this.destroy$.complete();
+    }
 
     isMyMessage(message: Message): boolean {
         return message.userFromId === this.me()?.id;
     }
 
+    scrollToBottom(): void {
+        try {
+            this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+        } catch(err) { }
+    }
+
     async sendMessage() {
         const trimmed = this.newMessage.trim();
         await firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
-        this.refresh$.next(); // Обновляем данные
+        this.refresh$.next();
+        this.scrollToBottom();
     }
 
     async onDelete(id: string) {
         await firstValueFrom(this.chatService.deleteMessageId(id));
-        this.refresh$.next(); // Обновляем данные
+        this.refresh$.next();
     }
 
     async saveMessage() {
         await firstValueFrom(this.chatService.updateMessageId(this.idMessage, this.editText));
         this.closeModal();
-        this.refresh$.next(); // Обновляем данные
+        this.refresh$.next();
     }
 
     openModalEdit(message: Message) {

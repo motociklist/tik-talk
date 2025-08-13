@@ -2,14 +2,6 @@
     <div class="chat-header">
         <img class="avatar2" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
         <span class="username">{{ chat.userFirst.username }}</span>
-        <input
-            [(ngModel)]="newMessage"
-            (keydown.enter)="sendMessage()"
-            placeholder="Введите сообщение..."
-            type="text"
-            class="message-field"
-        />
-        <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
     </div>
 
     @if(isModalOpen){
@@ -27,29 +19,40 @@
         </div>
     }
 
-    @for (message of chat.messages; track message.id) {
-        <div [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
-            <div>
-                <img
-                    class="avatar"
-                    [src]="(isMyMessage(message) ? chat.userSecond.avatarUrl : chat.userFirst.avatarUrl) | imgUrl"
-                    alt="avatar"
-                />
-                {{ message.text }}
-            </div>
-
-            @if (isMyMessage(message)) {
-                <div class="action-messages">
-                    <button (click)="openModalEdit(message)" class="action-message action-edit">
-                        <img src="/assets/imgs/edit.png" class="action-img" alt="Редактировать"/>
-                    </button>
-
-                    <button (click)="onDelete(message.id)" class="action-message action-delete">
-                        <img src="/assets/imgs/delete.png" class="action-img" alt="Удалить"/>
-                    </button>
+    <div #chatContainer class="chat-container">
+        @for (message of chat.messages; track message.id) {
+            <div #msg [ngClass]="{ 'my-message': isMyMessage(message), 'partner-message': !isMyMessage(message) }" class="message">
+                <div>
+                    <img
+                        class="avatar"
+                        [src]="(isMyMessage(message) ? chat.userSecond.avatarUrl : chat.userFirst.avatarUrl) | imgUrl"
+                        alt="avatar"
+                    />
+                    {{ message.text }}
                 </div>
-            }
 
-        </div>
-    }
+                @if (isMyMessage(message)) {
+                    <div class="action-messages">
+                        <button (click)="openModalEdit(message)" class="action-message action-edit">
+                            <img src="/assets/imgs/edit.png" class="action-img" alt="Редактировать"/>
+                        </button>
+
+                        <button (click)="onDelete(message.id)" class="action-message action-delete">
+                            <img src="/assets/imgs/delete.png" class="action-img" alt="Удалить"/>
+                        </button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div class="chat-futter">
+        <input
+            [(ngModel)]="newMessage"
+            (keydown.enter)="sendMessage()"
+            placeholder="Введите сообщение..."
+            type="text"
+            class="message-field"
+        />
+        <button (click)="sendMessage()" class="send-btn" [disabled]="!newMessage.trim()">Отправить</button>
+    </div>
 }
