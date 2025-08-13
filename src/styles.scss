@@ -163,3 +163,18 @@ body {
     background-color: red;
     color:white;
 }
+
+.page-title {
+    background-color: var(--primary-color);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 16px 0;
+    color: wheat;
+    letter-spacing: 0.5px;
+}
+
+.sticky{
+    position: sticky;
+    top: 0;
+}
