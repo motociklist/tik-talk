@@ -20,6 +20,19 @@
     gap: 8px;
 }
 
+.chat-futter {
+    position: sticky;
+    bottom: 0;
+    background: var(--primary-color);
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    z-index: 10;
+    border-radius: 20px 20px 0 0 ;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
 .avatar2 {
     width: 50px;
     height: 50px;
@@ -190,4 +203,8 @@
     color: var(--dark-color);
 }
 
+.chat-container {
+    height: calc(100vh - 170px);
+    overflow-y: auto;
+}
 
