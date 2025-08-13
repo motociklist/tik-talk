@@ -38,6 +38,7 @@
     &:focus-visible {
         background-color: var(--dark-hover-color);
         color: var(--primary-color);
+        
         .menu-item svg {
             color: var(--primary-color);
         }
