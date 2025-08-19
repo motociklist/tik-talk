@@ -1,0 +1,13 @@
+<nav>
+    <ul class="main-menu-list">
+        <li *ngFor="let menuItem of menuItems">
+            <a class="menu-item" [routerLink]="[menuItem.link]" routerLinkActive="active">
+                <svg class="icon-button" [icon]="menuItem.icon"></svg>
+                <span class="icon-text">{{ menuItem.label }}</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+

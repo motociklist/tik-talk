@@ -1,0 +1,85 @@
+:host {
+    display: block;
+    padding: 10px;
+    position: relative;
+    background: var(--dark-hover-color);
+}
+
+.main-menu-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+
+.menu-item {
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--light-color);
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 12px;
+    width: 100%;
+    text-align: left;
+    border-radius: 2px;
+    text-decoration: none;
+
+    &.active,
+    &:hover,
+    &:focus-visible {
+        background-color: var(--dark-hover-color);
+        color: var(--primary-color);
+
+        .menu-item svg {
+            color: var(--primary-color);
+        }
+    }
+}
+
+.icon-button {
+    margin: 0 auto 5px;
+    height: 14px;
+    width: 14px
+}
+
+.icon-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.to-subscribers {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.to-subscribers-btn {
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-logout {
+    color: var(--light-transparent-color);
+    border: 1px solid var(--light-color);
+    border-radius: 4px;
+}
+
+.btn-subscribers {
+    color: var(--primary-color);
+}
+
+.btn-hide {
+    color: var(--light-transparent-color);
+}
+
+.to-subscribers-icon {
+    width: 18px;
+    height: 18px;
+}
