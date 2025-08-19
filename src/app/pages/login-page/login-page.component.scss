@@ -40,3 +40,27 @@
     border-radius: 50%;
     background-color: var(--primary-color);
 }
+
+.img-login-mobile{
+    display: none;
+}
+
+@media (max-width: 800px) {
+    :host {
+        grid-template-columns: 1fr;
+    }
+    .flex {
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-login,h1{
+        display: none;
+    }
+
+    .img-login-mobile{
+        display: block;
+        max-width: 50%;
+    }
+}
+
