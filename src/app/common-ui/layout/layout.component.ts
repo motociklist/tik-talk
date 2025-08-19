@@ -1,11 +1,11 @@
-import { Component, inject } from "@angular/core";
+import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { SidebarComponent } from "../sidebar/sidebar.component";
-import { ProfileService } from "../../data/services/profile.service";
+import { SidebarBottomComponent } from '../sidebar-bottom/sidebar-bottom.component';
 
 @Component({
     selector: "app-layout",
-    imports: [RouterOutlet, SidebarComponent],
+    imports: [RouterOutlet, SidebarBottomComponent, SidebarComponent],
     templateUrl: "./layout.component.html",
     styleUrl: "./layout.component.scss",
 })
