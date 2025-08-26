@@ -1,12 +1,5 @@
-import {
-    Component,
-    ElementRef,
-    inject,
-    OnDestroy,
-    OnInit,
-    ViewChild
-} from "@angular/core";
-import {combineLatest, firstValueFrom, startWith, Subject, switchMap, take} from "rxjs";
+import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { combineLatest, firstValueFrom, startWith, Subject, switchMap, take } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { ChatService } from "../../../data/services/chat.service";
@@ -31,14 +24,11 @@ export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
     me = this.profileService.me;
     idChat = "";
     isModalOpen: boolean = false;
-    editText: string = '';
-    idMessage: string = '';
-    @ViewChild('chatContainer') private chatContainer!: ElementRef;
+    editText: string = "";
+    idMessage: string = "";
+    @ViewChild("chatContainer") private chatContainer!: ElementRef;
 
-    chatData$ = combineLatest([
-        this.route.params,
-        this.refresh$.pipe(startWith(null))
-    ]).pipe(
+    chatData$ = combineLatest([this.route.params, this.refresh$.pipe(startWith(null))]).pipe(
         switchMap(([{ id }]) => {
             this.idChat = id;
             return this.chatService.getChatId(id);
@@ -47,9 +37,7 @@ export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         //FIXME
-        this.chatData$
-            .pipe(take(1))
-            .subscribe(() => {
+        this.chatData$.pipe(take(1)).subscribe(() => {
             setTimeout(() => this.scrollToBottom(), 200);
         });
     }
@@ -66,12 +54,13 @@ export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
     scrollToBottom(): void {
         try {
             this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-        } catch(err) { }
+        } catch (err) {}
     }
 
     async sendMessage() {
         const trimmed = this.newMessage.trim();
         await firstValueFrom(this.chatService.postMessageId(this.idChat, trimmed));
+        this.newMessage = "";
         this.refresh$.next();
         this.scrollToBottom();
     }
