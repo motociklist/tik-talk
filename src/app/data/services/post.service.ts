@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Message } from "../interfaces/message.interface";
-import {Post} from '../interfaces/post.interface';
-import {PostInput} from '../interfaces/post-input.interface';
+import { Post } from '../interfaces/post.interface';
+import { PostInput } from '../interfaces/post-input.interface';
 
 @Injectable({
     providedIn: "root",
@@ -19,31 +18,44 @@ export class PostService {
         return this.http.post<Post>(`${this.baseApiUrl}post/`, PostInput);
     }
 
-    getPostMe() {
-        return this.http.get<Post[]>(`${this.baseApiUrl}post/get_my_posts/`);
+    getPostMySubscriptions() {
+        return this.http.get<Post[]>(`${this.baseApiUrl}post/my_subscriptions/`);
     }
 
     getPostId(id: string) {
         return this.http.get<Post>(`${this.baseApiUrl}post/${id}`);
     }
 
-    postMessageId(id: string, message: string) {
-        return this.http.post<Message>(`${this.baseApiUrl}message/send/${id}`, null, {
-            params: { message },
-        });
-    }
-
-    getMessageId(id: string) {
-        return this.http.get<Message>(`${this.baseApiUrl}message/${id}`);
-    }
-
-    updateMessageId(id: string, text: string) {
-        return this.http.patch<Message>(`${this.baseApiUrl}message/${id}`, null, {
+    updatePostId(id: string, text: string) {
+        return this.http.patch<Post>(`${this.baseApiUrl}post/${id}`, null, {
             params: { text },
+            //?
         });
     }
 
-    deleteMessageId(id: string) {
-        return this.http.delete<Message>(`${this.baseApiUrl}message/${id}`);
+    deletePostId(id: string) {
+        return this.http.delete<Post>(`${this.baseApiUrl}post/${id}`);
+    }
+
+    postLoadImageId(id: string, image: string) {
+        return this.http.post<Post>(`${this.baseApiUrl}post/upload_image/${id}`, null, {
+            //?
+            params: { image },
+        });
+    }
+
+    postDeleteImageId(id: string, image: string) {
+        return this.http.delete<Post>(`${this.baseApiUrl}post/delete_image/${id}`, {
+            //?
+            params: { image },
+        });
+    }
+
+    postCreateLikeId(id: string) {
+        return this.http.post<Post>(`${this.baseApiUrl}post/like/${id}`, null);
+    }
+
+    postDeleteLikeId(id: string) {
+        return this.http.delete<Post>(`${this.baseApiUrl}post/like/${id}`);
     }
 }
