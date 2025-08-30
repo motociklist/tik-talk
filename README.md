@@ -87,9 +87,21 @@ gir diff
 add prittierrc
 
 ```
+
 npx install --seve-dev prettier
 npx prettier --write .
 
 ```
 
-git checkout -- .
+build production
+
+```
+
+ng build --configuration production
+ng build --prod
+npx angular-cli-ghpages --dir=dist/tik-talk
+
+```
+
+
+
