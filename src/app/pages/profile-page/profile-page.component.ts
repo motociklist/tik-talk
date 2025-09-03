@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from "../../data/services/profile.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { Subscription, switchMap } from "rxjs";
+import {Observable, Subscription, switchMap} from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
@@ -10,6 +10,10 @@ import { PostFeedComponent } from "./post-feed/post-feed.component";
 import { Profile } from "../../data/interfaces/profile.interfase";
 import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
+import { Store } from '@ngrx/store';
+import { selectCounter } from '../../+store/app.selectors';
+import { increment } from '../../+store/app.actions';
+import { RootState } from '../../+store';
 
 @Component({
     selector: "app-profile-page",
@@ -26,14 +30,25 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
     editMode = true;
     currentProfile!: Profile;
+    counter$!: Observable<number>;
 
-    constructor(private router: Router) {}
+
+    constructor(
+        private router: Router,
+        private store: Store<RootState>
+    ) {}
 
     ngOnInit() {
         this.profile$.subscribe(profile => {
             this.currentProfile = profile;
             console.log(this.currentProfile);
         });
+        this.counter$ = this.store.select(selectCounter);
+        this.counter$ = this.store.select(state => state.app.counter);
+
+        this.counter$.subscribe(df => console.log(df));
+
+        this.Sube()
     }
 
     Subscribe() {
@@ -44,6 +59,12 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
                 isSubscribed: true,
             };
         });
+    }
+
+    Sube() {
+        console.log('ffdrhrthj')
+        console.log(increment())
+       this.store.dispatch(increment());
     }
 
     Unsubscribe() {
