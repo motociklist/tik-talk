@@ -43,12 +43,12 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
             this.currentProfile = profile;
             console.log(this.currentProfile);
         });
-        this.counter$ = this.store.select(selectCounter);
-        this.counter$ = this.store.select(state => state.app.counter);
-
-        this.counter$.subscribe(df => console.log(df));
-
-        this.Sube()
+        // this.counter$ = this.store.select(selectCounter);
+        // this.counter$ = this.store.select(state => state.app.counter);
+        //
+        // this.counter$.subscribe(df => console.log(df));
+        //
+        // this.Sube()
     }
 
     Subscribe() {
@@ -61,11 +61,11 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         });
     }
 
-    Sube() {
-        console.log('ffdrhrthj')
-        console.log(increment())
-       this.store.dispatch(increment());
-    }
+    // Sube() {
+    //     console.log('ffdrhrthj')
+    //     console.log(increment())
+    //    this.store.dispatch(increment());
+    // }
 
     Unsubscribe() {
         if (!this.currentProfile) return;
