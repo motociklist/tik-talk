@@ -103,5 +103,14 @@ npx angular-cli-ghpages --dir=dist/tik-talk
 
 ```
 
+add NgRx store
+
+```
+
+ng add @ngrx/store
+ng add @ngrx/effects
+ng add @ngrx/store-devtools
+
+```
 
 
