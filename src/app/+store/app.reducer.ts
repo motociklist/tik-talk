@@ -24,28 +24,28 @@ const reducer = createReducer(
     }),
 
     // on(increment, state => ({ ...state, counter: state.counter + 1 })),
-    //
-    // on(decrement, (state: AppState) => ({ ...state, counter: state.counter - 1 })),
-    //
-    // on(reset, (state: AppState) => ({ ...state, counter: 0 })),
-    //
-    //
-    // on(loadData, (state: AppState) => ({
-    //     ...state,
-    //     loading: true
-    // })),
-    //
-    // on(loadDataSuccess, (state: AppState, { items }) => ({
-    //     ...state,
-    //     loading: false,
-    //     items,
-    // })),
-    //
-    // on(loadDataFailure, (state: AppState, { error }) => ({
-    //     ...state,
-    //     loading: false,
-    //     error,
-    // }))
+
+    on(decrement, (state: AppState) => ({ ...state, counter: state.counter - 1 })),
+
+    on(reset, (state: AppState) => ({ ...state, counter: 0 })),
+
+
+    on(loadData, (state: AppState) => ({
+        ...state,
+        loading: true
+    })),
+
+    on(loadDataSuccess, (state: AppState, { items }) => ({
+        ...state,
+        loading: false,
+        items,
+    })),
+
+    on(loadDataFailure, (state: AppState, { error }) => ({
+        ...state,
+        loading: false,
+        error,
+    }))
 );
 
 export function appReducer(state: AppState | undefined, action: Action) {

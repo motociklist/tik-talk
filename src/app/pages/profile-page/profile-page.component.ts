@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from "../../data/services/profile.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import {Observable, Subscription, switchMap} from "rxjs";
+import { Observable, Subscription, switchMap } from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
