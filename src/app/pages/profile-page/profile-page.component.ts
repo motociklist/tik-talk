@@ -10,10 +10,10 @@ import { PostFeedComponent } from "./post-feed/post-feed.component";
 import { Profile } from "../../data/interfaces/profile.interfase";
 import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
-import { Store } from '@ngrx/store';
-import { selectCounter } from '../../+store/app.selectors';
-import { increment } from '../../+store/app.actions';
-import { RootState } from '../../+store';
+import { Store } from "@ngrx/store";
+import { selectCounter } from "../../+store/app.selectors";
+import { decrement, increment } from "../../+store/app.actions";
+import { RootState } from "../../+store";
 
 @Component({
     selector: "app-profile-page",
@@ -32,7 +32,6 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     currentProfile!: Profile;
     counter$!: Observable<number>;
 
-
     constructor(
         private router: Router,
         private store: Store<RootState>
@@ -47,8 +46,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         // this.counter$ = this.store.select(state => state.app.counter);
         //
         // this.counter$.subscribe(df => console.log(df));
-        //
-        // this.Sube()
+
+        this.Sube();
     }
 
     Subscribe() {
@@ -61,11 +60,10 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Sube() {
-    //     console.log('ffdrhrthj')
-    //     console.log(increment())
-    //    this.store.dispatch(increment());
-    // }
+    Sube() {
+        this.store.dispatch(increment());
+        this.store.dispatch(decrement());
+    }
 
     Unsubscribe() {
         if (!this.currentProfile) return;
