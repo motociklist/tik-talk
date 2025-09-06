@@ -2,7 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from "@angular/core";
 import { ProfileHeaderComponent } from "../../common-ui/profile-header/profile-header.component";
 import { ProfileService } from "../../data/services/profile.service";
 import { ActivatedRoute, RouterModule } from "@angular/router";
-import { Observable, Subscription, switchMap } from "rxjs";
+import { Subscription, switchMap } from "rxjs";
 import { AsyncPipe, NgClass } from "@angular/common";
 import { SvgIconComponent } from "../../common-ui/svg-icon/svg-icon.component";
 import { ImgUrlPipe } from "../../helpers/pipes/img-url.pipe";
@@ -30,7 +30,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
     editMode = true;
     currentProfile!: Profile;
-    counter$!: Observable<number>;
+    counter$!: Subscription;
 
     constructor(
         private router: Router,
@@ -42,10 +42,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
             this.currentProfile = profile;
             console.log(this.currentProfile);
         });
-        // this.counter$ = this.store.select(selectCounter);
-        // this.counter$ = this.store.select(state => state.app.counter);
-        //
-        // this.counter$.subscribe(df => console.log(df));
+        console.log(this.store.select(selectCounter));
+        this.counter$ = this.store.select(selectCounter).subscribe(df => console.log(df));
 
         this.Sube();
     }
