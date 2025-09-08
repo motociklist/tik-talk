@@ -12,7 +12,7 @@ import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { selectCounter } from "../../+store/app.selectors";
-import { decrement, increment } from "../../+store/app.actions";
+import {decrement, increment, loadData} from "../../+store/app.actions";
 import { RootState } from "../../+store";
 
 @Component({
@@ -61,6 +61,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     Sube() {
         this.store.dispatch(increment());
         this.store.dispatch(decrement());
+        this.store.dispatch(loadData());
     }
 
     Unsubscribe() {
