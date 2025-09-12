@@ -1,57 +1,82 @@
 .chat-card {
-    border: 1px solid var(--light-color);
-    padding: 32px 24px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #fff;
+    background: var(--dark-hover-color);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    margin-bottom: 16px;
 }
 
 .avatar-name {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    grid-gap: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
 }
 
 .chat-card__avatar {
-    width: 70px;
-    height: 70px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    overflow: hidden;
+    object-fit: cover;
+    margin-right: 12px;
+    border: 2px solid var(--primary-color);
 }
 
 .chat-card__name {
     display: flex;
     flex-direction: column;
-    gap: 8px;
 }
 
-.chat-card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    height: min-content;
+.chat-card__name .h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
-.chat-card__data {
-    transition: all 0.3s ease;
-    color: #999;
+.chat-card__name .subtitle {
+    font-size: 0.85rem;
 }
 
 .chat-card__data {
-    color: var(--light-color);
-    font-size: 15px;
-    font-family: 'Roboto', sans-serif;
-    display: flex;
-    align-items: center;
+    font-style: italic;
+    font-size: 0.85rem;
 }
 
 .chat-card__last-message {
-    font-size: 20px;
+    font-style: normal;
 }
 
-@media (max-width: 1024px) {
-    .chat-card {
-        grid-template-columns: 1fr;
-    }
+.chat-card button {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
+    cursor: pointer;
+    background: transparent;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.chat-card button:hover {
+    background: #fff;
+    transform: translateY(-1px);
+}
+
+.information{
+    width: 90%;
+}
+
+.item {
+    margin-bottom: 10px;
+}
+
+.item:last-child {
+    margin-bottom: 0;
+}
+
+.buttons {
+    width: 10%;
 }
 
