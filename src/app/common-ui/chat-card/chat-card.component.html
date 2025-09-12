@@ -18,17 +18,18 @@
             </div>
         </div>
 
+
         <div class="buttons">
-            <div>
-                <button [routerLink]="['/profile', chat.userFrom.id]" class="btn mt20">
-                    <img src="/assets/imgs/arrow.svg" alt="" />
+
+                <button [routerLink]="['/profile', chat.userFrom.id]" class="btn-mini" >
+                    <img class="center-img" src="/assets/imgs/arrow.svg" alt="" />
                 </button>
-            </div>
-            <div>
-                <button [routerLink]="['/chat', chat.id]" class="btn mt20">
-                    <img src="/assets/imgs/messeges.svg" alt="" />
+
+
+                <button [routerLink]="['/chat', chat.id]" class="btn-mini">
+                    <img  src="/assets/imgs/messeges.svg" alt="" />
                 </button>
-            </div>
+
         </div>
 
     </div>
