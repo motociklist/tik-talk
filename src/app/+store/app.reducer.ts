@@ -1,5 +1,5 @@
-import { AppState, initialAppState } from "./app.state";
-import { Action, createReducer, on } from "@ngrx/store";
+import {  initialAppState } from "./app.state";
+import { createReducer, on } from "@ngrx/store";
 import {
     decrement,
     increment,
@@ -8,11 +8,9 @@ import {
     loadDataSuccess,
     reset
 } from "./app.actions";
+import { AppState } from '../data/interfaces/app-state.interface';
 
-
-// export const serverFeatureKey = "server";
-
-const reducer = createReducer(
+export const appReducer = createReducer(
     initialAppState,
 
     on(increment, (state: AppState) => {
@@ -23,12 +21,9 @@ const reducer = createReducer(
         };
     }),
 
-    // on(increment, state => ({ ...state, counter: state.counter + 1 })),
-
     on(decrement, (state: AppState) => ({ ...state, counter: state.counter - 1 })),
 
     on(reset, (state: AppState) => ({ ...state, counter: 0 })),
-
 
     on(loadData, (state: AppState) => ({
         ...state,
@@ -47,7 +42,3 @@ const reducer = createReducer(
         error,
     }))
 );
-
-export function appReducer(state: AppState | undefined, action: Action) {
-    return reducer(state, action);
-}
