@@ -1,28 +1,36 @@
 <div class="chat-card">
-    <div class="avatar-name">
-        <img [src]="chat.userFrom.avatarUrl | imgUrl" [alt]="chat.userFrom.lastName" class="chat-card__avatar" />
+    <div class="flex">
 
-        <div class="chat-card__name">
-            <strong class="h6">{{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}</strong>
-            <span class="subtitle">{{ chat.userFrom.username }}</span>
+        <div class="information">
+            <div class="avatar-name item">
+                <img [src]="chat.userFrom.avatarUrl | imgUrl" [alt]="chat.userFrom.lastName" class="chat-card__avatar" />
+
+                <div class="chat-card__name">
+                    <strong class="h6">{{ chat.userFrom.firstName }} {{ chat.userFrom.lastName }}</strong>
+                    <span class="subtitle">{{ chat.userFrom.username }}</span>
+                </div>
+            </div>
+            <div class="chat-card__data item">
+                {{ chat.createdAt | date:'mediumDate' }}
+            </div>
+            <div class="chat-card__data chat-card__last-message item">
+                {{chat.message}}
+            </div>
         </div>
-    </div>
 
-    <div class="chat-card__data">
-        {{ chat.createdAt | date:'mediumDate' }}
-    </div>
+        <div class="buttons">
+            <div>
+                <button [routerLink]="['/profile', chat.userFrom.id]" class="btn mt20">
+                    <img src="/assets/imgs/arrow.svg" alt="" />
+                </button>
+            </div>
+            <div>
+                <button [routerLink]="['/chat', chat.id]" class="btn mt20">
+                    <img src="/assets/imgs/messeges.svg" alt="" />
+                </button>
+            </div>
+        </div>
 
-    <div class="chat-card__data chat-card__last-message">
-        {{chat.message}}
     </div>
-
-    <div>
-        <button [routerLink]="['/profile', chat.userFrom.id]" class="btn mt20 btn-margin btn-view">Просмотр профиля</button>
-    </div>
-
-    <div>
-        <button [routerLink]="['/chat', chat.id]" class="btn mt20 btn-margin">Открыть чат</button>
-    </div>
-
 </div>
 
