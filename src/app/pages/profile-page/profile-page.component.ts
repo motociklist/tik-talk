@@ -11,9 +11,8 @@ import { Profile } from "../../data/interfaces/profile.interfase";
 import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import { selectCounter } from "../../+store/app.selectors";
-import {decrement, increment, loadData} from "../../+store/app.actions";
-import { RootState } from "../../+store";
+// import { selectCounter } from "../../+store/app.selectors";
+// import { decrement, increment, loadData } from "../../+store/app.actions";
 
 @Component({
     selector: "app-profile-page",
@@ -25,6 +24,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     private subscriptions = new Subscription();
     profileService = inject(ProfileService);
     chatService = inject(ChatService);
+    store = inject(Store);
     route = inject(ActivatedRoute);
     me$ = this.profileService.getMe();
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
@@ -34,18 +34,17 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     constructor(
         private router: Router,
-        private store: Store<RootState>
     ) {}
 
     ngOnInit() {
         this.profile$.subscribe(profile => {
             this.currentProfile = profile;
             console.log(this.currentProfile);
+            // this.Sube();
         });
-        console.log(this.store.select(selectCounter));
-        this.counter$ = this.store.select(selectCounter).subscribe(df => console.log(df));
-
-        this.Sube();
+        //////////////////////////////NgRx
+        // console.log(this.store.select(selectCounter));
+        // this.counter$ = this.store.select(selectCounter).subscribe(df => console.log(df));
     }
 
     Subscribe() {
@@ -58,11 +57,11 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         });
     }
 
-    Sube() {
-        this.store.dispatch(increment());
-        this.store.dispatch(decrement());
-        this.store.dispatch(loadData());
-    }
+    // Sube() {
+    //     this.store.dispatch(increment());
+    //     this.store.dispatch(decrement());
+    //     this.store.dispatch(loadData());
+    // }
 
     Unsubscribe() {
         if (!this.currentProfile) return;
