@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import { Location } from '@angular/common';
 
 @Component({
     selector: "app-sidebar-top",
@@ -8,9 +9,14 @@ import {Component, Input, OnInit} from "@angular/core";
     imports: [],
 })
 export class SidebarTopComponent implements OnInit {
+
+    constructor(private location: Location) {}
+
     @Input() description: string = '';
-    ngOnInit() {
 
+    ngOnInit() {}
+
+    goBack() {
+        this.location.back();
     }
-
 }
