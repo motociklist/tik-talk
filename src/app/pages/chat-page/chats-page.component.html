@@ -1,4 +1,4 @@
-<div class="sticky page-title">Список чатов</div>
+<app-sidebar-top [description]="'Список чатов'"></app-sidebar-top>
 
 <div class="chat-list list-bottom">
     @for (chat of chats$ | async; track chat.id) {
