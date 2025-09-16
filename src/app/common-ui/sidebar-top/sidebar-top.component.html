@@ -1,1 +1,12 @@
-<div class="sticky page-title">{{ description }}</div>
+<div class="appbar sticky page-title">
+    <button class="button back" (click)="goBack()">
+        <img class="img" src="/assets/imgs/goback.svg" alt="" />
+    </button>
+
+    <span class="title">{{ description }}</span>
+
+    <button class="button menu">
+        <img class="img"  src="/assets/imgs/dots.svg" alt="" />
+    </button>
+</div>
+

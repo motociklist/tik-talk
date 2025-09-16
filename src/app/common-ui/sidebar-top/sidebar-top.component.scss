@@ -1,0 +1,74 @@
+.appbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    height: 60px;
+    background-color: var(--dark-color);
+    color: #ffffff;
+    font-family: 'Inter', 'Roboto', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.button:hover {
+    background: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.button:active {
+    background: var(--light-primary-color);
+    transform: translateY(0);
+}
+
+.img {
+    width: 24px;
+    height: 24px;
+}
+
+.title {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--light-color);
+}
+
+.back {
+    margin-right: 8px;
+}
+
+.menu {
+    margin-left: 8px;
+}
+
+@media (max-width: 480px) {
+    .appbar {
+        height: 52px;
+        padding: 0 8px;
+    }
+
+    .img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+}
