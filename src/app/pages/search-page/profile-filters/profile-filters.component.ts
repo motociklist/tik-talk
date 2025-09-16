@@ -3,10 +3,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { debounceTime, startWith, Subscribable, Subscription, switchMap } from "rxjs";
 import { ProfileService } from "../../../data/services/profile.service";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
+import {SidebarTopComponent} from '../../../common-ui/sidebar-top/sidebar-top.component';
 
 @Component({
     selector: "app-profile-filters",
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, SidebarTopComponent],
     templateUrl: "./profile-filters.component.html",
     styleUrl: "./profile-filters.component.scss",
 })
