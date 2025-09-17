@@ -17,3 +17,9 @@ export const selectLoading = createSelector(
     selectAppState,
     (state) => state.loading
 );
+
+export const selectIsView = createSelector(
+    selectAppState,
+    (state) => state.isView
+);
+

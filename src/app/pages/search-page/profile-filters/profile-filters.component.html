@@ -1,18 +1,24 @@
-<app-sidebar-top [description]="'Список пользователей'"></app-sidebar-top>
-<form class="profile-search-form" [formGroup]="searchForm">
-    <label class="tt-form-label">
-        <span class="tt-form-label__text text-color-black"> Name user </span>
-        <input type="text" class="tt-form-input input-color" formControlName="firstName" />
-    </label>
+<app-sidebar-top [description]="'Список пользователей'"
+                 [filter]="true"
+></app-sidebar-top>
 
-    <label class="tt-form-label">
-        <span class="tt-form-label__text text-color-black"> Lastname user </span>
-        <input type="text" class="tt-form-input input-color" formControlName="lastName" />
-    </label>
+@if (isView()) {
+    <form class="profile-search-form" [formGroup]="searchForm">
+        <label class="tt-form-label">
+            <span class="tt-form-label__text text-color-black"> Name user </span>
+            <input type="text" class="tt-form-input input-color" formControlName="firstName" />
+        </label>
 
-    <label class="tt-form-label">
-        <span class="tt-form-label__text text-color-black"> Skils </span>
-        <input type="text" class="tt-form-input input-color" formControlName="stack" />
-    </label>
-</form>
+        <label class="tt-form-label">
+            <span class="tt-form-label__text text-color-black"> Lastname user </span>
+            <input type="text" class="tt-form-input input-color" formControlName="lastName" />
+        </label>
+
+        <label class="tt-form-label">
+            <span class="tt-form-label__text text-color-black"> Skils </span>
+            <input type="text" class="tt-form-input input-color" formControlName="stack" />
+        </label>
+    </form>
+}
+
 

@@ -3,4 +3,5 @@ export interface AppState {
     items: string[];
     loading: boolean;
     error: any;
+    isView: boolean;
 }
