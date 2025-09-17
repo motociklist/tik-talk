@@ -17,7 +17,7 @@ export class ProfileFiltersComponent implements OnDestroy {
     store = inject(Store);
 
     fb = inject(FormBuilder);
-    profileServis = inject(ProfileService);
+    profileService = inject(ProfileService);
 
     isView = toSignal(this.store.select(selectIsView));
 
@@ -35,7 +35,7 @@ export class ProfileFiltersComponent implements OnDestroy {
                 startWith({}), //fix
                 debounceTime(300),
                 switchMap(fromValue => {
-                    return this.profileServis.filterProfiles(fromValue);
+                    return this.profileService.filterProfiles(fromValue);
                 }),
                 takeUntilDestroyed() //ngOnDestroy
             )
