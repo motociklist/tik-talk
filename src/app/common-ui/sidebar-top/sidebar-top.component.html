@@ -6,13 +6,13 @@
     <span class="title">{{ description }}</span>
 
     @if(filter){
-        <button class="button menu" (click)="toggleFilter()">
-            <img class="img"  src="/assets/imgs/filter.svg" alt="" />
+        <button class="button menu" [ngClass]="isView() ? 'btn-filter-active' : 'btn-filter-not-active'" (click)="toggleFilter()">
+            <img class="img" src="/assets/imgs/filter.svg" alt="" />
         </button>
     }
 
     <button class="button menu" (click)="togglePopover()">
-        <img class="img"  src="/assets/imgs/dots.svg" alt="" />
+        <img class="img" src="/assets/imgs/dots.svg" alt="" />
     </button>
 
 
