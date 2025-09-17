@@ -19,3 +19,8 @@ export const loadDataFailure = createAction(
     '[App] Load Data Failure',
     props<{ error: any }>()
 );
+
+export const filterView = createAction(
+    '[App] is View Search',
+    props<{ isView: boolean }>()
+);

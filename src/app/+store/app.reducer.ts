@@ -1,7 +1,7 @@
 import {  initialAppState } from "./app.state";
 import { createReducer, on } from "@ngrx/store";
 import {
-    decrement,
+    decrement, filterView,
     increment,
     loadData,
     loadDataFailure,
@@ -40,5 +40,10 @@ export const appReducer = createReducer(
         ...state,
         loading: false,
         error,
+    })),
+
+    on(filterView, (state: AppState, { isView } ) => ({
+        ...state,
+        isView: isView,
     }))
 );

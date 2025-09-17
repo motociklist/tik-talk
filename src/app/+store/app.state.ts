@@ -5,4 +5,5 @@ export const initialAppState: AppState = {
     items: [],
     loading: false,
     error: null,
+    isView: false,
 };
