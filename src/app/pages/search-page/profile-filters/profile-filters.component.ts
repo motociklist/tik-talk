@@ -1,11 +1,11 @@
 import { Component, inject, OnDestroy } from "@angular/core";
-import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
-import {debounceTime, startWith, Subscribable, Subscription, switchMap, take} from "rxjs";
+import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
+import { debounceTime, startWith, Subscription, switchMap } from "rxjs";
 import { ProfileService } from "../../../data/services/profile.service";
-import {takeUntilDestroyed, toSignal} from "@angular/core/rxjs-interop";
-import {SidebarTopComponent} from '../../../common-ui/sidebar-top/sidebar-top.component';
-import {selectIsView} from '../../../+store/app.selectors';
-import {Store} from '@ngrx/store';
+import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
+import { SidebarTopComponent } from '../../../common-ui/sidebar-top/sidebar-top.component';
+import { selectIsView } from '../../../+store/app.selectors';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: "app-profile-filters",
