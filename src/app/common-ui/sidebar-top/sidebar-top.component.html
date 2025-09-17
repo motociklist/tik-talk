@@ -5,8 +5,25 @@
 
     <span class="title">{{ description }}</span>
 
-    <button class="button menu">
+    @if(filter){
+        <button class="button menu" (click)="toggleFilter()">
+            <img class="img"  src="/assets/imgs/filter.svg" alt="" />
+        </button>
+    }
+
+    <button class="button menu" (click)="togglePopover()">
         <img class="img"  src="/assets/imgs/dots.svg" alt="" />
     </button>
+
+
+    @if (showPopover) {
+        <div class="popover">
+            <ul class="filter-list">
+                <li (click)="applyFilter('Все')">Все</li>
+                <li (click)="applyFilter('Активные')">Активные</li>
+                <li (click)="applyFilter('Архив')">Архив</li>
+            </ul>
+        </div>
+    }
 </div>
 
