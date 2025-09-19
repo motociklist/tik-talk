@@ -4,8 +4,8 @@ import {Store} from '@ngrx/store';
 import {selectIsView} from '../../+store/app.selectors';
 import {filterView} from '../../+store/app.actions';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
-import {SvgIconComponent} from '../svg-icon/svg-icon.component';
+// import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
+// import {SvgIconComponent} from '../svg-icon/svg-icon.component';
 
 @Component({
     selector: "app-sidebar-top",
@@ -13,8 +13,8 @@ import {SvgIconComponent} from '../svg-icon/svg-icon.component';
     templateUrl: "./sidebar-top.component.html",
     styleUrl: "./sidebar-top.component.scss",
     imports: [
-        ImgUrlPipe,
-        SvgIconComponent,
+        // ImgUrlPipe,
+        // SvgIconComponent,
         NgClass
     ]
 })
