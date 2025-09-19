@@ -6,8 +6,15 @@
     --dark-hover-color: #161616;
     --primary-color: #ae7aff;
     --light-primary-color: #c4b5fd;
+    --gray-light-color: #6c757d;
     --gray-color: #5f646d;
+    --gray-dark-color: #2c2c2c;
     --light-transparent-color: rgba(255, 255, 255, 0.75);
+    --red-color: red;
+    --wheat-color: wheat;
+    --blue-color: #0d6efd;
+    --green-color: #198754;
+    --green-dark-color: #157347;
 }
 
 *,
@@ -152,18 +159,18 @@ body {
 }
 
 .btn-view {
-    background-color: #fff;
-    color: white;
+    background-color: var(--light-color);
+    color: var(--light-color);
 }
 
 .btn-unsubscribe {
-    background-color: #cccccc;
-    color: #666666;
+    background-color: var(--light-transparent-color);
+    color: var(--gray-color);
 }
 
 .btn-delete {
-    background-color: red;
-    color:white;
+    background-color: var(--red-color);
+    color: var(--light-color);
 }
 
 .page-title {
@@ -172,7 +179,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     padding: 16px 0;
-    color: wheat;
+    color: var(--wheat-color);
     letter-spacing: 0.5px;
 }
 
