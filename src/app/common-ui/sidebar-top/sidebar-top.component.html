@@ -5,7 +5,7 @@
 
     <span class="title">{{ description }}</span>
 
-    @if(filter){
+    @if (filter) {
         <button class="button menu" [ngClass]="isView() ? 'btn-filter-active' : 'btn-filter-not-active'" (click)="toggleFilter()">
             <img class="img" src="/assets/imgs/filter.svg" alt="" />
         </button>
@@ -14,7 +14,6 @@
     <button class="button menu" (click)="togglePopover()">
         <img class="img" src="/assets/imgs/dots.svg" alt="" />
     </button>
-
 
     @if (showPopover) {
         <div class="popover">
@@ -26,4 +25,3 @@
         </div>
     }
 </div>
-

@@ -1,6 +1,5 @@
 <div class="chat-card">
     <div class="flex">
-
         <div class="information">
             <div class="avatar-name item">
                 <img [src]="chat.userFrom.avatarUrl | imgUrl" [alt]="chat.userFrom.lastName" class="chat-card__avatar" />
@@ -11,27 +10,21 @@
                 </div>
             </div>
             <div class="chat-card__data item">
-                {{ chat.createdAt | date:'mediumDate' }}
+                {{ chat.createdAt | date: "mediumDate" }}
             </div>
             <div class="chat-card__data chat-card__last-message item">
-                {{chat.message}}
+                {{ chat.message }}
             </div>
         </div>
 
-
         <div class="buttons">
+            <button [routerLink]="['/profile', chat.userFrom.id]" class="btn-mini">
+                <img class="center-img" src="/assets/imgs/arrow.svg" alt="" />
+            </button>
 
-                <button [routerLink]="['/profile', chat.userFrom.id]" class="btn-mini" >
-                    <img class="center-img" src="/assets/imgs/arrow.svg" alt="" />
-                </button>
-
-
-                <button [routerLink]="['/chat', chat.id]" class="btn-mini">
-                    <img  src="/assets/imgs/messeges.svg" alt="" />
-                </button>
-
+            <button [routerLink]="['/chat', chat.id]" class="btn-mini">
+                <img src="/assets/imgs/messeges.svg" alt="" />
+            </button>
         </div>
-
     </div>
 </div>
-

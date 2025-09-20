@@ -1,6 +1,6 @@
 export interface PostInput {
-    title: string,
-    communityId: number,
-    content: string,
+    title: string;
+    communityId: number;
+    content: string;
     authorId: number;
 }

@@ -3,7 +3,7 @@
     border-radius: 12px;
     border: 1px solid #fff;
     background: var(--dark-hover-color);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     margin-bottom: 16px;
 }
 
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.flex{
+.flex {
     display: flex;
     justify-content: space-between;
 }
@@ -56,7 +56,9 @@
     border: 1px solid var(--primary-color);
     cursor: pointer;
     background: transparent;
-    transition: background 0.2s ease, transform 0.1s ease;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
 }
 
 .chat-card button:hover {
@@ -64,7 +66,7 @@
     transform: translateY(-1px);
 }
 
-.information{
+.information {
     width: 90%;
 }
 
@@ -85,8 +87,6 @@
     gap: 10px;
 }
 
-.btn-mini{
+.btn-mini {
     width: 40px;
 }
-
-

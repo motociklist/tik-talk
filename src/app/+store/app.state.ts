@@ -1,4 +1,4 @@
-import { AppState } from '../data/interfaces/app-state.interface';
+import { AppState } from "../data/interfaces/app-state.interface";
 
 export const initialAppState: AppState = {
     counter: 0,

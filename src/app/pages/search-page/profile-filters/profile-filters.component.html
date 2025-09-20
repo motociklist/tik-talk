@@ -1,6 +1,4 @@
-<app-sidebar-top [description]="'Список пользователей'"
-                 [filter]="true"
-></app-sidebar-top>
+<app-sidebar-top [description]="'Список пользователей'" [filter]="true"></app-sidebar-top>
 
 @if (isView()) {
     <form class="profile-search-form" [formGroup]="searchForm">
@@ -20,5 +18,3 @@
         </label>
     </form>
 }
-
-

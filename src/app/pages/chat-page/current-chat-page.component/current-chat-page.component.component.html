@@ -4,7 +4,7 @@
         <span class="username">{{ chat.userFirst.username }}</span>
     </div>
 
-    @if(isModalOpen){
+    @if (isModalOpen) {
         <div class="modal">
             <div class="modal-content">
                 <h3 class="message-edit">Редактировать сообщение</h3>
@@ -34,11 +34,11 @@
                 @if (isMyMessage(message)) {
                     <div class="action-messages">
                         <button (click)="openModalEdit(message)" class="action-message action-edit">
-                            <img src="/assets/imgs/edit.png" class="action-img" alt="Редактировать"/>
+                            <img src="/assets/imgs/edit.png" class="action-img" alt="Редактировать" />
                         </button>
 
                         <button (click)="onDelete(message.id)" class="action-message action-delete">
-                            <img src="/assets/imgs/delete.png" class="action-img" alt="Удалить"/>
+                            <img src="/assets/imgs/delete.png" class="action-img" alt="Удалить" />
                         </button>
                     </div>
                 }

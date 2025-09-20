@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
-import { Post } from '../interfaces/post.interface';
-import { PostInput } from '../interfaces/post-input.interface';
+import { Post } from "../interfaces/post.interface";
+import { PostInput } from "../interfaces/post-input.interface";
 
 @Injectable({
     providedIn: "root",

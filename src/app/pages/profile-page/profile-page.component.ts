@@ -32,9 +32,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     currentProfile!: Profile;
     counter$!: Subscription;
 
-    constructor(
-        private router: Router,
-    ) {}
+    constructor(private router: Router) {}
 
     ngOnInit() {
         this.profile$.subscribe(profile => {
