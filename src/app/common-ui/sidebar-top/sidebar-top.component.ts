@@ -1,9 +1,9 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
-import {Location, NgClass} from '@angular/common';
-import {Store} from '@ngrx/store';
-import {selectIsView} from '../../+store/app.selectors';
-import {filterView} from '../../+store/app.actions';
-import {toSignal} from '@angular/core/rxjs-interop';
+import { Component, inject, Input, OnInit } from "@angular/core";
+import { Location, NgClass } from "@angular/common";
+import { Store } from "@ngrx/store";
+import { selectIsView } from "../../+store/app.selectors";
+import { filterView } from "../../+store/app.actions";
+import { toSignal } from "@angular/core/rxjs-interop";
 // import {ImgUrlPipe} from '../../helpers/pipes/img-url.pipe';
 // import {SvgIconComponent} from '../svg-icon/svg-icon.component';
 
@@ -15,20 +15,18 @@ import {toSignal} from '@angular/core/rxjs-interop';
     imports: [
         // ImgUrlPipe,
         // SvgIconComponent,
-        NgClass
-    ]
+        NgClass,
+    ],
 })
 export class SidebarTopComponent implements OnInit {
-
     constructor(private location: Location) {}
     store = inject(Store);
-    @Input() description: string = '';
+    @Input() description: string = "";
     @Input() filter: boolean = false;
 
     showPopover = false;
 
     isView = toSignal(this.store.select(selectIsView));
-
 
     ngOnInit() {}
 
@@ -41,7 +39,7 @@ export class SidebarTopComponent implements OnInit {
     }
 
     applyFilter(filter: string) {
-        console.log('Выбран фильтр:', filter);
+        console.log("Выбран фильтр:", filter);
         this.showPopover = false;
     }
 

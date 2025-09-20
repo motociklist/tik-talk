@@ -1,14 +1,7 @@
-import {  initialAppState } from "./app.state";
+import { initialAppState } from "./app.state";
 import { createReducer, on } from "@ngrx/store";
-import {
-    decrement, filterView,
-    increment,
-    loadData,
-    loadDataFailure,
-    loadDataSuccess,
-    reset
-} from "./app.actions";
-import { AppState } from '../data/interfaces/app-state.interface';
+import { decrement, filterView, increment, loadData, loadDataFailure, loadDataSuccess, reset } from "./app.actions";
+import { AppState } from "../data/interfaces/app-state.interface";
 
 export const appReducer = createReducer(
     initialAppState,
@@ -17,7 +10,7 @@ export const appReducer = createReducer(
         return {
             ...state,
             loading: false,
-            counter: state.counter + 1
+            counter: state.counter + 1,
         };
     }),
 
@@ -27,7 +20,7 @@ export const appReducer = createReducer(
 
     on(loadData, (state: AppState) => ({
         ...state,
-        loading: true
+        loading: true,
     })),
 
     on(loadDataSuccess, (state: AppState, { items }) => ({
@@ -42,7 +35,7 @@ export const appReducer = createReducer(
         error,
     })),
 
-    on(filterView, (state: AppState, { isView } ) => ({
+    on(filterView, (state: AppState, { isView }) => ({
         ...state,
         isView: isView,
     }))

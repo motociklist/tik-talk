@@ -41,7 +41,7 @@
     background-color: var(--primary-color);
 }
 
-.img-login-mobile{
+.img-login-mobile {
     display: none;
 }
 
@@ -54,13 +54,13 @@
         justify-content: center;
     }
 
-    .img-login,h1{
+    .img-login,
+    h1 {
         display: none;
     }
 
-    .img-login-mobile{
+    .img-login-mobile {
         display: block;
         max-width: 50%;
     }
 }
-

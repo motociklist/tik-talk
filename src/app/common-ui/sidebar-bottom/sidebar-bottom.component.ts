@@ -3,7 +3,6 @@ import { SvgIconComponent } from "../svg-icon/svg-icon.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
 
-
 @Component({
     selector: "app-sidebar-bottom",
     standalone: true,

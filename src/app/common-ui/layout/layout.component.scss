@@ -17,16 +17,16 @@ app-sidebar {
     overflow-y: auto;
 }
 
-.sidebar-bottom{
+.sidebar-bottom {
     display: none;
 }
 
 @media (max-width: 900px) {
-   .sidebar{
-       display: none;
-   }
+    .sidebar {
+        display: none;
+    }
 
-    .sidebar-bottom{
+    .sidebar-bottom {
         display: block;
         position: absolute;
         bottom: 0;

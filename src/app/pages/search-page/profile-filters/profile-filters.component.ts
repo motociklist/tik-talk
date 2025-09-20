@@ -3,9 +3,9 @@ import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { debounceTime, startWith, Subscription, switchMap } from "rxjs";
 import { ProfileService } from "../../../data/services/profile.service";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
-import { SidebarTopComponent } from '../../../common-ui/sidebar-top/sidebar-top.component';
-import { selectIsView } from '../../../+store/app.selectors';
-import { Store } from '@ngrx/store';
+import { SidebarTopComponent } from "../../../common-ui/sidebar-top/sidebar-top.component";
+import { selectIsView } from "../../../+store/app.selectors";
+import { Store } from "@ngrx/store";
 
 @Component({
     selector: "app-profile-filters",
