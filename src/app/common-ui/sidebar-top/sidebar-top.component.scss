@@ -7,7 +7,7 @@
     padding: 0 12px;
     height: 60px;
     background-color: var(--dark-color);
-    color: #ffffff;
+    color: var(--light-color);
     font-family: "Inter", "Roboto", sans-serif;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 1000;
@@ -87,8 +87,8 @@
     position: absolute;
     top: 60px;
     right: 16px;
-    background-color: #2c2c2c;
-    border: 1px solid #444;
+    background-color: var(--gray-dark-color);
+    border: 1px solid var(--gray-color);
     border-radius: 8px;
     padding: 8px 0;
     z-index: 1000;
@@ -105,10 +105,10 @@
 .filter-list li {
     padding: 10px 16px;
     cursor: pointer;
-    color: #f0f0f0;
+    color: var(--light-color);
     transition: background-color 0.2s ease;
 }
 
 .filter-list li:hover {
-    background-color: #444;
+    background-color: var(--gray-color);
 }
