@@ -1,7 +1,7 @@
 .chat-card {
     padding: 16px;
     border-radius: 12px;
-    border: 1px solid #fff;
+    border: 1px solid var(--light-color);
     background: var(--dark-hover-color);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
     margin-bottom: 16px;
@@ -62,7 +62,7 @@
 }
 
 .chat-card button:hover {
-    background: #fff;
+    background: var(--light-color);
     transform: translateY(-1px);
 }
 
