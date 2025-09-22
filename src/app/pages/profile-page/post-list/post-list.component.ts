@@ -1,24 +1,18 @@
 import {Component, inject, Input, OnInit} from "@angular/core";
 import { PostService } from "../../../data/services/post.service";
 import {Profile} from '../../../data/interfaces/profile.interfase';
-import {Post} from '../../../data/interfaces/post.interface';
 
 @Component({
     selector: "app-post",
     imports: [],
-    templateUrl: "./post.component.html",
-    styleUrl: "./post.component.scss",
+    templateUrl: "./post-list.component.html",
+    styleUrl: "./post-list.component.scss",
 })
-export class PostComponent implements OnInit {
+export class PostListComponent implements OnInit {
     postService = inject(PostService);
-    post = {};
 
     @Input() profile!: Profile;
 
     ngOnInit() {
-        this.postService.getPosts().subscribe(t => {
-            this.post = t[0]
-            console.log(this.post);
-        });
     }
 }
