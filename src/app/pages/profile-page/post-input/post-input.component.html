@@ -1,1 +1,24 @@
-<p>post-input works!</p>
+<div class="new-post">
+    <img [src]="profile.avatarUrl | imgUrl" alt="avatar">
+
+    <input type="text"
+           placeholder="Напишите пост"
+           [(ngModel)]="postText"
+           maxlength="100"
+    >
+
+    <button class="send-btn"
+            [disabled]="!postText"
+            (click)="postSend()"
+    >
+        ➤
+    </button>
+</div>
+
+
+@if (postText) {
+    <div>
+        {{ postText.length }}/100
+    </div>
+
+}

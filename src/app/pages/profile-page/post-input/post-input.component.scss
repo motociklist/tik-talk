@@ -1,0 +1,44 @@
+.new-post {
+    background: var(--dark-hover-color);
+    border: 1px solid var(--gray-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+.new-post img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+.new-post input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--light-color);
+    font-size: 15px;
+}
+.send-btn {
+    background: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    color: var(--light-color);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.send-btn:hover {
+    background: var(--primary-color);
+}
+
+.send-btn:disabled {
+    background-color: var(--gray-light-color);
+    cursor: not-allowed;
+}
+
+.send-btn:hover:not(:disabled) {
+    background-color: var(--blue-color);
+}
