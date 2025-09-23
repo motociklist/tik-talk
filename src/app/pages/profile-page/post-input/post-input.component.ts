@@ -16,10 +16,7 @@ export class PostInputComponent implements OnInit {
     postText = "";
     @Input() profile!: Profile;
 
-
-
     ngOnInit() {}
-
 
     postSend() {
         const newPost: PostInput = {
