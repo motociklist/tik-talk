@@ -4,7 +4,7 @@
 
         <div>
             <div class="author">{{ post.author.firstName }}</div>
-            <div class="time">{{ post.createdAt }}</div>
+            <div class="time">{{ post.createdAt | date: "mediumDate" }}</div>
         </div>
     </div>
 
