@@ -10,8 +10,13 @@ export class PostService {
     http = inject(HttpClient);
     baseApiUrl = "https://icherniakov.ru/yt-course/";
 
-    getPosts() {
-        return this.http.get<Post[]>(`${this.baseApiUrl}post/`);
+
+    getPosts(userId?: string) {
+        let params = {};
+        if (userId) {
+            params = { user_id: userId };
+        }
+        return this.http.get<Post[]>(`${this.baseApiUrl}post/`, { params });
     }
 
     postPostId(PostInput: PostInput) {
@@ -19,7 +24,7 @@ export class PostService {
     }
 
     getPostMySubscriptions() {
-        return this.http.get<Post[]>(`${this.baseApiUrl}post/my_subscriptions/`);
+        return this.http.get<Post[]>(`${this.baseApiUrl}post/my_subscriptions`);
     }
 
     getPostId(id: string) {

@@ -13,7 +13,16 @@ import { PostComponent } from "../post/post.component";
 export class PostListComponent implements OnInit {
     postService = inject(PostService);
     @Input() profile!: Profile;
-    postList$=  this.postService.getPosts();
+    postList2$ : any  ;
+    postList3$ : any  ;
+    postList4$ : any  ;
+    postList$=  this.postService.getPostMySubscriptions();
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(23);
+       // this.postList$ = this.postService.getPosts(this.profile.id);
+        this.postList3$=  this.postService.getPostMySubscriptions().subscribe(jk => console.log(jk));
+        this.postList2$ = this.postService.getPosts('493703965').subscribe(posts => console.log(posts));
+        this.postList4$ = this.postService.getPosts(this.profile.id).subscribe(posts => console.log(posts));
+    }
 }
