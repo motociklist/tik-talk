@@ -19,7 +19,6 @@ export class PostListComponent implements OnInit {
     postList$=  this.postService.getPostMySubscriptions();
 
     ngOnInit() {
-        console.log(23);
        // this.postList$ = this.postService.getPosts(this.profile.id);
         this.postList3$=  this.postService.getPostMySubscriptions().subscribe(jk => console.log(jk));
         this.postList2$ = this.postService.getPosts('493703965').subscribe(posts => console.log(posts));
