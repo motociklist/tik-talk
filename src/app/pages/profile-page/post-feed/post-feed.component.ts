@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { PostInputComponent } from "../post-input/post-input.component";
-import { Profile } from '../../../data/interfaces/profile.interfase';
+import { Profile } from "../../../data/interfaces/profile.interfase";
 import { PostListComponent } from "../post-list/post-list.component";
 
 @Component({
