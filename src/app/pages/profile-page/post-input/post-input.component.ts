@@ -1,9 +1,9 @@
 import { Component, inject, Input, OnInit } from "@angular/core";
-import { Profile } from '../../../data/interfaces/profile.interfase';
-import { ImgUrlPipe } from '../../../helpers/pipes/img-url.pipe';
-import { FormsModule } from '@angular/forms';
-import { PostService } from '../../../data/services/post.service';
-import { PostInput } from '../../../data/interfaces/post-input.interface';
+import { Profile } from "../../../data/interfaces/profile.interfase";
+import { ImgUrlPipe } from "../../../helpers/pipes/img-url.pipe";
+import { FormsModule } from "@angular/forms";
+import { PostService } from "../../../data/services/post.service";
+import { PostInput } from "../../../data/interfaces/post-input.interface";
 
 @Component({
     selector: "app-post-input",
@@ -26,11 +26,10 @@ export class PostInputComponent implements OnInit {
             communityId: 0,
         };
 
-        this.postService.postPostId(newPost).subscribe((t) => {
+        this.postService.postPostId(newPost).subscribe(t => {
             console.log(t);
         });
 
-        this.postText = ""
+        this.postText = "";
     }
-
 }
