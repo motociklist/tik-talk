@@ -1,9 +1,10 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import { Component, inject, Input, OnDestroy, OnInit } from "@angular/core";
 import { Profile } from "../../../data/interfaces/profile.interfase";
 import { ImgUrlPipe } from "../../../helpers/pipes/img-url.pipe";
 import { FormsModule } from "@angular/forms";
 import { PostService } from "../../../data/services/post.service";
 import { PostInput } from "../../../data/interfaces/post-input.interface";
+import { ProfileService } from "../../../data/services/profile.service";
 
 @Component({
     selector: "app-post-input",
@@ -13,10 +14,15 @@ import { PostInput } from "../../../data/interfaces/post-input.interface";
 })
 export class PostInputComponent implements OnInit {
     postService = inject(PostService);
+    profileService = inject(ProfileService);
     postText = "";
     @Input() profile!: Profile;
 
-    ngOnInit() {}
+    me = this.profileService.me;
+    ngOnInit() {
+        console.log(this.me());
+    }
+
 
     postSend() {
         const newPost: PostInput = {
