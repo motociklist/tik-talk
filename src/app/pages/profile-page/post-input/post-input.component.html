@@ -1,6 +1,5 @@
 <div class="new-post">
-    <img [src]="profile.avatarUrl | imgUrl" alt="avatar" />
-
+    <img [src]="me()?.avatarUrl ?? null | imgUrl" alt="avatar" />
     <input type="text" placeholder="Напишите пост" [(ngModel)]="postText" maxlength="100" />
 
     <button class="send-btn" [disabled]="!postText" (click)="postSend()">➤</button>
