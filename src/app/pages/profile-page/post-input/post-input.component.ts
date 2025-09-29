@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, inject, Input, OnInit } from "@angular/core";
 import { Profile } from "../../../data/interfaces/profile.interfase";
 import { ImgUrlPipe } from "../../../helpers/pipes/img-url.pipe";
 import { FormsModule } from "@angular/forms";
