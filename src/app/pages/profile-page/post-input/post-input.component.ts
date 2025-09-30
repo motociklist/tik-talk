@@ -23,7 +23,6 @@ export class PostInputComponent implements OnInit {
         console.log(this.me());
     }
 
-
     postSend() {
         const newPost: PostInput = {
             title: "1",
@@ -35,6 +34,8 @@ export class PostInputComponent implements OnInit {
         this.postService.postPostId(newPost).subscribe(t => {
             console.log(t);
         });
+
+        //FIXME output
 
         this.postText = "";
     }
