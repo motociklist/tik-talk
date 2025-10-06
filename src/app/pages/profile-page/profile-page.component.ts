@@ -11,12 +11,22 @@ import { Profile } from "../../data/interfaces/profile.interfase";
 import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
+import { ToggleImageComponent } from "../../common-ui/toggle/toggle-image.component";
 // import { selectCounter } from "../../+store/app.selectors";
 // import { decrement, increment, loadData } from "../../+store/app.actions";
 
 @Component({
     selector: "app-profile-page",
-    imports: [ProfileHeaderComponent, SvgIconComponent, RouterModule, ImgUrlPipe, PostFeedComponent, NgClass, AsyncPipe],
+    imports: [
+        ProfileHeaderComponent,
+        SvgIconComponent,
+        RouterModule,
+        ImgUrlPipe,
+        PostFeedComponent,
+        NgClass,
+        AsyncPipe,
+        ToggleImageComponent,
+    ],
     templateUrl: "./profile-page.component.html",
     styleUrl: "./profile-page.component.scss",
 })
@@ -101,5 +111,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.subscriptions.unsubscribe();
+    }
+
+    onToggle(newVal: boolean) {
+        console.log("Новое значение:", newVal);
     }
 }
