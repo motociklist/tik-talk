@@ -1,4 +1,4 @@
-import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,12 +10,15 @@ import { CommonModule } from '@angular/common';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToggleImageComponent {
-
     isSecondImage = signal(false);
+    valueToggle: boolean = false;
+    @Output() toggled = new EventEmitter<boolean>();
 
     toggle() {
-        this.isSecondImage.update(v => !v);
-        console.log('value:', this.isSecondImage());
+        this.isSecondImage.update(v => {
+            this.valueToggle = !v;
+            this.toggled.emit(this.valueToggle);
+            return this.valueToggle;
+        });
     }
-
 }

@@ -39,6 +39,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     me$ = this.profileService.getMe();
     subscribersListMe$ = this.profileService.getSubscriptionsListMe();
     editMode = true;
+    valueToggle = false;
     currentProfile!: Profile;
     counter$!: Subscription;
 
@@ -113,7 +114,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
         this.subscriptions.unsubscribe();
     }
 
-    onToggle(newVal: boolean) {
-        console.log("Новое значение:", newVal);
+    onToggle(value: boolean) {
+        this.valueToggle = value;
     }
 }
