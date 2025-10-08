@@ -1,7 +1,6 @@
 @if (profile$ | async; as profile) {
     <header class="profile-page__header">
         <app-profile-header [profile]="profile"></app-profile-header>
-        <app-toggle-image (toggled)="onToggle($event)"></app-toggle-image>
         @if (editMode) {
             <a class="btn to-setting-btn" [routerLink]="['/settings']">
                 Редактировать
@@ -20,12 +19,10 @@
         }
     </header>
 
-    <main class="profile-page__body">
+    <div class="profile-page__body">
 
-
-        @if (valueToggle) {
+        <div class="disable-all">
             <app-post-feed [profile]="profile"></app-post-feed>
-        } @else {
             <div>
                 <h3 class="h6 mb16">Подписчики</h3>
                 <div class="subscribers-wrapper mb32">
@@ -47,6 +44,35 @@
                 <h3 class="h6 mb16">О себе</h3>
                 <p class="medium-text">{{ profile.description }}</p>
             </div>
-        }
-    </main>
+        </div>
+
+        <div class="disable">
+            @if (valueToggle) {
+                <app-post-feed [profile]="profile"></app-post-feed>
+            } @else {
+                <div>
+                    <h3 class="h6 mb16">Подписчики</h3>
+                    <div class="subscribers-wrapper mb32">
+                        @for (subscriber of subscribersList$ | async; track subscriber.id) {
+                            <a class="subscriber-avarat-btn" [routerLink]="['/profile', subscriber.id]">
+                                <img [src]="subscriber.avatarUrl | imgUrl" alt="" />
+                            </a>
+                        }
+                        <a class="to-subscribers-search" [routerLink]="['/search']"></a>
+                    </div>
+
+                    <h3 class="h6 mb16">Навыки</h3>
+                    <div class="stack-wrapper mb32">
+                        @for (skill of profile.stack; track skill) {
+                            <div class="skill-tag">{{ skill }}</div>
+                        }
+                    </div>
+
+                    <h3 class="h6 mb16">О себе</h3>
+                    <p class="medium-text">{{ profile.description }}</p>
+                </div>
+            }
+            <app-toggle-image (toggled)="onToggle($event)"></app-toggle-image>
+        </div>
+    </div>
 }

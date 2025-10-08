@@ -79,3 +79,21 @@
     gap: 4px;
     flex-wrap: wrap;
 }
+
+.disable{
+    display: none;
+}
+
+.disable-all{
+    display: contents;
+}
+
+@media (max-width: 800px) {
+   .disable{
+       display: contents;
+   }
+
+    .disable-all{
+        display: none;
+    }
+}
