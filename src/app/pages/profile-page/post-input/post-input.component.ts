@@ -1,10 +1,11 @@
-import { Component, inject, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, inject, Input, OnInit, Output } from "@angular/core";
 import { Profile } from "../../../data/interfaces/profile.interfase";
 import { ImgUrlPipe } from "../../../helpers/pipes/img-url.pipe";
 import { FormsModule } from "@angular/forms";
 import { PostService } from "../../../data/services/post.service";
 import { PostInput } from "../../../data/interfaces/post-input.interface";
 import { ProfileService } from "../../../data/services/profile.service";
+import { Post } from "../../../data/interfaces/post.interface";
 
 @Component({
     selector: "app-post-input",
@@ -17,6 +18,7 @@ export class PostInputComponent implements OnInit {
     profileService = inject(ProfileService);
     postText = "";
     @Input() profile!: Profile;
+    @Output() postCreated = new EventEmitter<Post>();
 
     me = this.profileService.me;
     ngOnInit() {
@@ -31,12 +33,9 @@ export class PostInputComponent implements OnInit {
             communityId: 0,
         };
 
-        this.postService.postPostId(newPost).subscribe(t => {
-            console.log(t);
+        this.postService.postPostId(newPost).subscribe((createdPost) => {
+            this.postCreated.emit(createdPost);
+            this.postText = "";
         });
-
-        //FIXME output
-
-        this.postText = "";
     }
 }
