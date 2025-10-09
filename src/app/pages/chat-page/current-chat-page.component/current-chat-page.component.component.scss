@@ -17,7 +17,6 @@
     padding: 12px 16px;
     background-color: var(--gray-dark-color);
     border-bottom: 1px solid var(--gray-color);
-    border-radius: 12px 12px 0 0;
 }
 
 .avatar-current-chat {
@@ -169,7 +168,6 @@ textarea {
     padding: 16px;
     background-color: var(--gray-dark-color);
     border-top: 1px solid var(--gray-color);
-    border-radius: 0 0 12px 12px;
 }
 
 .message-field {
@@ -200,4 +198,10 @@ textarea {
 
 .send-btn:hover:not(:disabled) {
     background-color: var(--blue-color);
+}
+
+@media (max-width: 900px) {
+    .chat-container{
+        height: calc(100vh - 190px);
+    }
 }
