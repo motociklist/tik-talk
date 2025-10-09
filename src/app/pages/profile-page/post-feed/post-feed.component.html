@@ -1,5 +1,8 @@
 @if (profile.id === me()?.id) {
-    <app-post-input [profile]="profile"> </app-post-input>
+    <app-post-input [profile]="profile"
+                    (postCreated)="onPostCreated($event)">
+    </app-post-input>
 }
 
-<app-post-list [profile]="profile"> </app-post-list>
+<app-post-list [profile]="profile">
+</app-post-list>
