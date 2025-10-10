@@ -4,11 +4,20 @@
             <label class="tt-form-label">
                 <span class="tt-form-label__text"> Name </span>
                 <input type="text" class="tt-form-input" formControlName="firstName" />
+                <div class="error" *ngIf="form.get('firstName')?.touched && form.get('firstName')?.invalid">
+                    <small *ngIf="form.get('firstName')?.errors?.['required']">First name is required.</small>
+                    <small *ngIf="form.get('firstName')?.errors?.['maxlength']">Maximum 20 characters allowed.</small>
+                </div>
+
             </label>
 
             <label class="tt-form-label">
                 <span class="tt-form-label__text"> Lastname </span>
                 <input type="text" class="tt-form-input" formControlName="lastName" />
+                <div class="error" *ngIf="form.get('lastName')?.touched && form.get('lastName')?.invalid">
+                    <small *ngIf="form.get('lastName')?.errors?.['required']">Last name is required.</small>
+                    <small *ngIf="form.get('lastName')?.errors?.['maxlength']">Maximum 20 characters allowed.</small>
+                </div>
             </label>
         </div>
 
@@ -19,7 +28,10 @@
 
         <label class="tt-form-label">
             <span class="tt-form-label__text"> About me </span>
-            <textarea formControlName="description" class="tt-form-input tt-textarea" rows="4"> </textarea>
+            <textarea formControlName="description" class="tt-form-input tt-textarea" rows="4"></textarea>
+            <div class="error" *ngIf="form.get('description')?.touched && form.get('description')?.invalid">
+                <small *ngIf="form.get('description')?.errors?.['maxlength']">Maximum 100 characters allowed.</small>
+            </div>
         </label>
 
         <label class="tt-form-label">
@@ -30,10 +42,15 @@
         <label class="tt-form-label">
             <span class="tt-form-label__text"> Stack </span>
             <input type="text" class="tt-form-input" formControlName="stack" />
+            <div class="error" *ngIf="form.get('stack')?.touched && form.get('stack')?.invalid">
+                <small *ngIf="form.get('stack')?.errors?.['pattern']">
+                    Please enter comma-separated words (e.g. Angular, TypeScript).
+                </small>
+            </div>
         </label>
     </div>
 
     <div>
-        <button class="btn" (click)="onSave()">Save</button>
+        <button [ngClass]="{ 'btn-disabled': form.invalid, 'btn': form.valid }" (click)="onSave()" [disabled]="form.invalid">Save</button>
     </div>
 </form>
