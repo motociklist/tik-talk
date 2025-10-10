@@ -4,12 +4,13 @@ import { ProfileService } from "../../data/services/profile.service";
 import { firstValueFrom } from "rxjs";
 import { AvatarUploadComponent } from "./avatar-upload/avatar-upload.component";
 import { Router } from "@angular/router";
+import { NgClass, NgIf } from "@angular/common";
 
 @Component({
     selector: "app-settings-page",
     templateUrl: "./settings-page.component.html",
     styleUrl: "./settings-page.component.scss",
-    imports: [ReactiveFormsModule, AvatarUploadComponent],
+    imports: [ReactiveFormsModule, AvatarUploadComponent, NgIf, NgClass],
 })
 export class SettingsPageComponent {
     fb = inject(FormBuilder);
@@ -18,11 +19,11 @@ export class SettingsPageComponent {
     @ViewChild(AvatarUploadComponent) avatarUplouder!: AvatarUploadComponent;
 
     form = this.fb.group({
-        firstName: ["", Validators.required],
-        lastName: ["", Validators.required],
+        firstName: ["", [Validators.maxLength(20), Validators.required]],
+        lastName: ["", [Validators.maxLength(20), Validators.required]],
         username: [{ value: "", disabled: true }, Validators.required],
-        description: [""],
-        stack: [""],
+        description: ["", [Validators.maxLength(50)]],
+        stack: ["", [Validators.pattern(/^(\w+(,\s*\w+)*)?$/)]],
     });
 
     constructor() {
