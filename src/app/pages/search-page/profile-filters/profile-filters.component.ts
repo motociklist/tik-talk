@@ -1,30 +1,30 @@
 import { Component, inject, OnDestroy } from "@angular/core";
-import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { debounceTime, startWith, Subscription, switchMap } from "rxjs";
 import { ProfileService } from "../../../data/services/profile.service";
 import { takeUntilDestroyed, toSignal } from "@angular/core/rxjs-interop";
 import { SidebarTopComponent } from "../../../common-ui/sidebar-top/sidebar-top.component";
 import { selectIsView } from "../../../+store/app.selectors";
 import { Store } from "@ngrx/store";
+import { NgIf } from "@angular/common";
 
 @Component({
     selector: "app-profile-filters",
-    imports: [ReactiveFormsModule, SidebarTopComponent],
+    imports: [ReactiveFormsModule, SidebarTopComponent, NgIf],
     templateUrl: "./profile-filters.component.html",
     styleUrl: "./profile-filters.component.scss",
 })
 export class ProfileFiltersComponent implements OnDestroy {
     store = inject(Store);
-
     fb = inject(FormBuilder);
     profileService = inject(ProfileService);
 
     isView = toSignal(this.store.select(selectIsView));
 
     searchForm = this.fb.group({
-        firstName: [""],
-        lastName: [""],
-        stack: [""],
+        firstName: ["", [Validators.maxLength(20)]],
+        lastName: ["", [Validators.maxLength(20)]],
+        stack: ["", [Validators.maxLength(20)]],
     });
 
     searchFormSub!: Subscription;
