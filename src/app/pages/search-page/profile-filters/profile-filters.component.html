@@ -4,17 +4,53 @@
     <form class="profile-search-form" [formGroup]="searchForm">
         <label class="tt-form-label">
             <span class="tt-form-label__text text-color-black"> Name user </span>
-            <input type="text" class="tt-form-input input-color" formControlName="firstName" />
+            <input
+                type="text"
+                class="tt-form-input input-color"
+                formControlName="firstName"
+            />
+            <div
+                class="error"
+                *ngIf="searchForm.get('firstName')?.touched && searchForm.get('firstName')?.invalid"
+            >
+                <small *ngIf="searchForm.get('firstName')?.errors?.['maxlength']">
+                    Maximum 20 characters allowed.
+                </small>
+            </div>
         </label>
 
         <label class="tt-form-label">
             <span class="tt-form-label__text text-color-black"> Lastname user </span>
-            <input type="text" class="tt-form-input input-color" formControlName="lastName" />
+            <input
+                type="text"
+                class="tt-form-input input-color"
+                formControlName="lastName"
+            />
+            <div
+                class="error"
+                *ngIf="searchForm.get('lastName')?.touched && searchForm.get('lastName')?.invalid"
+            >
+                <small *ngIf="searchForm.get('lastName')?.errors?.['maxlength']">
+                    Maximum 20 characters allowed.
+                </small>
+            </div>
         </label>
 
         <label class="tt-form-label">
             <span class="tt-form-label__text text-color-black"> Skils </span>
-            <input type="text" class="tt-form-input input-color" formControlName="stack" />
+            <input
+                type="text"
+                class="tt-form-input input-color"
+                formControlName="stack"
+            />
+            <div
+                class="error"
+                *ngIf="searchForm.get('stack')?.touched && searchForm.get('stack')?.invalid"
+            >
+                <small *ngIf="searchForm.get('stack')?.errors?.['maxlength']">
+                    Maximum 20 characters allowed.
+                </small>
+            </div>
         </label>
     </form>
 }
