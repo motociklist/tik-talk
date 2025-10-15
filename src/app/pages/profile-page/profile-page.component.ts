@@ -12,6 +12,7 @@ import { ChatService } from "../../data/services/chat.service";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { ToggleImageComponent } from "../../common-ui/toggle/toggle-image.component";
+import { AuthService } from "../../auth/auth.service";
 // import { selectCounter } from "../../+store/app.selectors";
 // import { decrement, increment, loadData } from "../../+store/app.actions";
 
@@ -31,6 +32,7 @@ import { ToggleImageComponent } from "../../common-ui/toggle/toggle-image.compon
     styleUrl: "./profile-page.component.scss",
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
+    authService = inject(AuthService);
     private subscriptions = new Subscription();
     profileService = inject(ProfileService);
     chatService = inject(ChatService);
@@ -116,5 +118,9 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
 
     onToggle(value: boolean) {
         this.valueToggle = value;
+    }
+
+    logout() {
+        this.authService.logout();
     }
 }
