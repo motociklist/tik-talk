@@ -1,7 +1,7 @@
 import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { combineLatest, firstValueFrom, startWith, Subject, switchMap, take } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
-import { AsyncPipe, NgClass } from "@angular/common";
+import { AsyncPipe, Location, NgClass } from "@angular/common";
 import { ChatService } from "../../../data/services/chat.service";
 import { Message } from "../../../data/interfaces/message.interface";
 import { ProfileService } from "../../../data/services/profile.service";
@@ -34,6 +34,8 @@ export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
             return this.chatService.getChatId(id);
         })
     );
+
+    constructor(private location: Location) {}
 
     ngOnInit() {
         //FIXME
@@ -84,5 +86,9 @@ export class CurrentChatPageComponentComponent implements OnInit, OnDestroy {
 
     closeModal() {
         this.isModalOpen = false;
+    }
+
+    goBack() {
+        this.location.back();
     }
 }

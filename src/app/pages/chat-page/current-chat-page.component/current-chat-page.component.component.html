@@ -1,7 +1,10 @@
 @if (chatData$ | async; as chat) {
     <div class="chat-header">
-        <img class="avatar-current-chat" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
+        <button class="button back" (click)="goBack()">
+            <img class="img" src="/assets/imgs/goback.svg" alt="" />
+        </button>
         <span class="username">{{ chat.userFirst.username }}</span>
+        <img class="avatar-current-chat" [src]="chat.userFirst.avatarUrl | imgUrl" alt="avatar" />
     </div>
 
     @if (isModalOpen) {
