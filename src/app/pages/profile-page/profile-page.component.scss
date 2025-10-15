@@ -80,20 +80,20 @@
     flex-wrap: wrap;
 }
 
-.disable{
+.disable {
     display: none;
 }
 
-.disable-all{
+.disable-all {
     display: contents;
 }
 
 @media (max-width: 800px) {
-   .disable{
-       display: contents;
-   }
+    .disable {
+        display: contents;
+    }
 
-    .disable-all{
+    .disable-all {
         display: none;
     }
 }

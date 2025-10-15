@@ -229,13 +229,11 @@ textarea {
     margin-right: 8px;
 }
 
-
 .btn-filter-active {
     background: var(--primary-color);
 }
 
 .btn-filter-not-active {
-
 }
 
 .img {
@@ -243,9 +241,8 @@ textarea {
     height: 24px;
 }
 
-
 @media (max-width: 900px) {
-    .chat-container{
+    .chat-container {
         height: calc(100vh - 190px);
     }
 }
