@@ -33,7 +33,7 @@ export class PostInputComponent implements OnInit {
             communityId: 0,
         };
 
-        this.postService.postPostId(newPost).subscribe((createdPost) => {
+        this.postService.postPostId(newPost).subscribe(createdPost => {
             this.postCreated.emit(createdPost);
             this.postText = "";
         });

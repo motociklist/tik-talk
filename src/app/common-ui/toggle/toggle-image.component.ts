@@ -1,13 +1,13 @@
-import { Component, signal, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, ChangeDetectionStrategy, Output, EventEmitter } from "@angular/core";
+import { CommonModule } from "@angular/common";
 
 @Component({
-    selector: 'app-toggle-image',
+    selector: "app-toggle-image",
     standalone: true,
     imports: [CommonModule],
-    templateUrl: './toggle-image.component.html',
-    styleUrls: ['./toggle-image.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    templateUrl: "./toggle-image.component.html",
+    styleUrls: ["./toggle-image.component.scss"],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleImageComponent {
     isSecondImage = signal(false);

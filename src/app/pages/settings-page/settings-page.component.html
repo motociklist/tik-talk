@@ -8,7 +8,6 @@
                     <small *ngIf="form.get('firstName')?.errors?.['required']">First name is required.</small>
                     <small *ngIf="form.get('firstName')?.errors?.['maxlength']">Maximum 20 characters allowed.</small>
                 </div>
-
             </label>
 
             <label class="tt-form-label">
@@ -51,6 +50,6 @@
     </div>
 
     <div>
-        <button [ngClass]="{ 'btn-disabled': form.invalid, 'btn': form.valid }" (click)="onSave()" [disabled]="form.invalid">Save</button>
+        <button [ngClass]="{ 'btn-disabled': form.invalid, btn: form.valid }" (click)="onSave()" [disabled]="form.invalid">Save</button>
     </div>
 </form>
