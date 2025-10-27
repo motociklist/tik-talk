@@ -112,3 +112,19 @@ ng add @ngrx/effects
 ng add @ngrx/store-devtools
 
 ```
+
+
+
+'import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({ name: 'truncate' })
+export class TruncatePipe implements PipeTransform {
+transform(value: string, limit = 200, ellipsis = '...'): string {
+if (!value) return '';
+return value.length > limit ? value.slice(0, limit) + ellipsis : value;
+}
+}
+
+<p>{{ message | truncate:200 }}</p>
+
+'

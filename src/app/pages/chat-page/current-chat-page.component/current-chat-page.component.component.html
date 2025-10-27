@@ -12,7 +12,7 @@
             <div class="modal-content">
                 <h3 class="message-edit">Редактировать сообщение</h3>
 
-                <textarea [(ngModel)]="editText" rows="4"></textarea>
+                <textarea [(ngModel)]="editText" rows="4" maxlength="200"></textarea>
 
                 <div class="action-button-modal">
                     <button class="save-button" (click)="saveMessage()">Сохранить</button>
@@ -52,6 +52,7 @@
         <input
             [(ngModel)]="newMessage"
             (keydown.enter)="sendMessage()"
+            maxlength="200"
             placeholder="Введите сообщение..."
             type="text"
             class="message-field"
